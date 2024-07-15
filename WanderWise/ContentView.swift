@@ -25,12 +25,12 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
-struct Category: Hashable {
+struct DiscoverCategories: Hashable {
     let name, image: String
 }
 struct DiscoverCategoriesView: View {
     
-    let categories: [Category] = [
+    let categories: [DiscoverCategories] = [
         .init(name: "Art", image: "paintpalette.fill"),
         .init(name: "Sport", image: "sportscourt.fill"),
         .init(name: "Live Events", image: "music.mic"),
@@ -58,8 +58,16 @@ struct DiscoverCategoriesView: View {
         }
     }
 }
-
+struct PopularDestinations: Hashable{
+    let country, city, image: String
+}
 struct PopularDestinationsView: View {
+    
+    let categories: [PopularDestinations] = [
+        .init(country: "France", city: "Paris", image: "eiffel_tower"),
+        .init(country: "Japan", city: "Tokyo", image: "japan"),
+        .init(country: "New York", city: "Seattle", image: "new_york"),
+    ]
     var body: some View {
         VStack{
             HStack{
@@ -73,12 +81,28 @@ struct PopularDestinationsView: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 8.0){
-                    ForEach(0..<5, id: \.self) { num in
-                        Spacer()
-                            .frame(width: 125, height: 150)
-                            .background(Color.gray)
-                            .cornerRadius(5)
-                            .shadow(color: .gray, radius: 4, x: 0.0, y: 2.0)
+                    ForEach(categories, id: \.self) { category in
+                        VStack(alignment: .leading, spacing: 2){
+                            
+                            Image(category.image)
+                                .resizable()
+                                .cornerRadius(6)
+                                .padding(.top, 6)
+
+                            Text(category.city)
+                                .font(.system(size: 12, weight: .semibold))
+                                .padding(.horizontal, 4)
+                            Text(category.country)
+                                .font(.system(size: 12, weight: .semibold))
+                                .padding(.horizontal, 4)
+                                .foregroundColor(.gray)
+                        }.padding(.horizontal, 6)
+                            .padding(.bottom, 6)
+                        .frame(width: 125, height: 150)
+                        .background(Color(.init(white: 0.9, alpha: 1)))
+                        .cornerRadius(5)
+                        .shadow(color: .gray, radius: 4, x: 0.0, y: 2.0)
+                        .padding(.bottom)
                     }
                 }.padding(.horizontal)
             }
