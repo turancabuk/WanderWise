@@ -25,38 +25,26 @@ struct PopularDestinationsView: View {
                     .font(.system(size: 12, weight: .semibold))
             }.padding(.horizontal)
              .padding(.top)
-            
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 8.0){
                     ForEach(categories, id: \.self) { category in
                         VStack(alignment: .leading, spacing: 2){
-                            
                             Image(category.image)
                                 .resizable()
-                                .cornerRadius(6)
-                                .padding(.top, 6)
-
+                                .modifier(ImageModifier2())
                             Text(category.city)
-                                .font(.system(size: 12, weight: .semibold))
-                                .padding(.horizontal, 4)
+                                .modifier(TextModifier2())
                             Text(category.country)
-                                .font(.system(size: 12, weight: .semibold))
-                                .padding(.horizontal, 4)
+                                .modifier(TextModifier2())
                                 .foregroundColor(.gray)
-                        }.padding(.horizontal, 6)
-                            .padding(.bottom, 6)
-                        .frame(width: 125, height: 150)
-                        .background(Color.white)
-                        .cornerRadius(5)
-                        .shadow(color: .gray, radius: 4, x: 0.0, y: 2.0)
-                        .padding(.bottom)
+                        }
+                        .modifier(VstackModifier())
                     }
                 }.padding(.horizontal)
             }
         }
     }
 }
-
 #Preview {
     PopularDestinationsView()
 }

@@ -22,22 +22,15 @@ struct DiscoverCategoriesView: View {
                 ForEach(categories, id: \.self) { category in
                     VStack(spacing: 16) {
                         Image(systemName: category.image)
-                            .font(.system(size: 24))
-                            .foregroundColor(Color(.orange))
-                            .frame(width: 68, height: 68)
-                            .background(Color.white)
-                            .cornerRadius(.infinity)
-                            .shadow(color: .gray, radius: 5)
+                            .modifier(ImageModifier())
                         Text(category.name)
-                            .font(.system(size: 12, weight: .semibold))
-                            .foregroundColor(.white)
+                            .modifier(TextModifier())
                     }.frame(width: 68)
                 }
             }.padding()
         }
     }
 }
-
 #Preview {
     DiscoverCategoriesView()
 }
