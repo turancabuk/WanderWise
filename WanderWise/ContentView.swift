@@ -8,16 +8,43 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State  var textfieldText: String = ""
+    
+    init() {
+        UINavigationBar.appearance().largeTitleTextAttributes = [
+            .foregroundColor: UIColor.white
+        ]
+    }
     var body: some View {
         NavigationView {
-            ScrollView() {
+
+            ZStack{
+                LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.9882131219, green: 0.6823856831, blue: 0.2509839535, alpha: 1)), Color(#colorLiteral(red: 0.996080339, green: 0.446325405, blue: 0.2697934847, alpha: 1))]), startPoint: .top, endPoint: .center)
+                    .ignoresSafeArea()
                 
-                DiscoverCategoriesView()
-                PopularDestinationsView()
-                PopularRestaurantsView()
-                TrendingCreatorsView()
-                
-            }.navigationTitle("Discover")
+                Color(.init(white: 0.95, alpha: 1))
+                    .offset(y: 400)
+                ScrollView(showsIndicators: false) {
+                    HStack{
+                        Image(systemName: "magnifyingglass")
+                        Text("Where do you want to go")
+                        Spacer()
+                    }.font(.system(size: 14, weight: .semibold))
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color(.init(white: 0.95, alpha: 0.3)))
+                        .cornerRadius(10)
+                        .padding(16)
+                    DiscoverCategoriesView()
+                    VStack{
+                        PopularDestinationsView()
+                        PopularRestaurantsView()
+                        TrendingCreatorsView()
+                    }.background(Color(.init(white: 0.95, alpha: 1)))
+                        .cornerRadius(16)
+                        .padding(.top, 54)
+                }.navigationTitle("Discover")
+            }
         }
     }
 }
@@ -44,14 +71,14 @@ struct DiscoverCategoriesView: View {
                     VStack(spacing: 16) {
                         Image(systemName: category.image)
                             .font(.system(size: 24))
-                            .foregroundColor(.blue)
+                            .foregroundColor(Color(.orange))
                             .frame(width: 68, height: 68)
                             .background(Color.white)
-                            .tint(Color.white)
                             .cornerRadius(.infinity)
                             .shadow(color: .gray, radius: 5)
                         Text(category.name)
                             .font(.system(size: 12, weight: .semibold))
+                            .foregroundColor(.white)
                     }.frame(width: 68)
                 }
             }.padding()
@@ -99,14 +126,14 @@ struct PopularDestinationsView: View {
                         }.padding(.horizontal, 6)
                             .padding(.bottom, 6)
                         .frame(width: 125, height: 150)
-                        .background(Color(.init(white: 0.9, alpha: 1)))
+                        .background(Color.white)
                         .cornerRadius(5)
                         .shadow(color: .gray, radius: 4, x: 0.0, y: 2.0)
                         .padding(.bottom)
                     }
                 }.padding(.horizontal)
             }
-        }.padding(.bottom)
+        }
     }
 }
 struct PopularRestaurants: Hashable {
@@ -162,11 +189,13 @@ struct PopularRestaurantsView: View {
                         }
                             .frame(width: 250)
                             .shadow(color: .gray, radius: 4, x: 0, y: 2)
-                            .background(Color(.init(white: 0.9, alpha: 1)))
-                    }
+                            .background(Color.white)
+                    }.cornerRadius(8)
+                        .shadow(color: .gray, radius: 4, x: 0, y: 2)
+                        .padding(.vertical, 4)
                 }.padding(.horizontal)
             }
-        }.padding(.bottom)
+        }
     }
 }
 struct TrendingCreators: Hashable {
