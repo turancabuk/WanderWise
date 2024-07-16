@@ -11,7 +11,7 @@ import SwiftUI
 struct WanderWiseApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
         }
     }
 }
