@@ -28,26 +28,20 @@ struct MainView: View {
                         Image(systemName: "magnifyingglass")
                         Text("Where do you want to go")
                         Spacer()
-                    }.font(.system(size: 14, weight: .semibold))
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color(.init(white: 0.95, alpha: 0.3)))
-                        .cornerRadius(10)
-                        .padding(16)
+                    }
+                    .modifier(CustomModifier())
                     DiscoverCategoriesView()
                     VStack{
                         PopularDestinationsView()
                         PopularRestaurantsView()
                         TrendingCreatorsView()
-                    }.background(Color(.init(white: 0.95, alpha: 1)))
-                        .cornerRadius(16)
-                        .padding(.top, 54)
+                    }
+                    .modifier(CustomModifier1())
                 }.navigationTitle("Discover")
             }
         }
     }
 }
-
 #Preview {
     MainView()
 }

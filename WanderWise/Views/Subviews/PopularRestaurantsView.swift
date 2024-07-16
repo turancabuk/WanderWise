@@ -31,12 +31,7 @@ struct PopularRestaurantsView: View {
                         HStack(spacing: 8){
                             Image(restaurant.image)
                                 .resizable()
-                                .scaledToFill()
-                                .frame(width: 64, height: 64)
-                                .clipped()
-                                .cornerRadius(5)
-                                .padding(.vertical, 6)
-                                .padding(.leading, 6)
+                                .modifier(ImageModifier3())
                             VStack(alignment: .leading, spacing: 6){
                                 HStack{
                                     Text(restaurant.name)
@@ -55,18 +50,14 @@ struct PopularRestaurantsView: View {
                             }.font(.system(size: 12, weight: .semibold))
                             Spacer()
                         }
-                            .frame(width: 250)
-                            .shadow(color: .gray, radius: 4, x: 0, y: 2)
-                            .background(Color.white)
-                    }.cornerRadius(8)
-                        .shadow(color: .gray, radius: 4, x: 0, y: 2)
-                        .padding(.vertical, 4)
+                        .modifier(HstackModifier())
+                    }
+                    .modifier(ForeachModifier())
                 }.padding(.horizontal)
             }
         }
     }
 }
-
 #Preview {
     PopularRestaurantsView()
 }
