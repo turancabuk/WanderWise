@@ -28,17 +28,20 @@ struct PopularDestinationsView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 8.0){
                     ForEach(categories, id: \.self) { category in
-                        VStack(alignment: .leading, spacing: 2){
-                            Image(category.image)
-                                .resizable()
-                                .modifier(ImageModifier2())
-                            Text(category.city)
-                                .modifier(TextModifier2())
-                            Text(category.country)
-                                .modifier(TextModifier2())
-                                .foregroundColor(.gray)
+                        NavigationLink(destination: Text("Destination2")) {
+                            VStack(alignment: .leading, spacing: 2){
+                                Image(category.image)
+                                    .resizable()
+                                    .modifier(ImageModifier2())
+                                Text(category.city)
+                                    .modifier(TextModifier2())
+                                    .foregroundColor(.black)
+                                Text(category.country)
+                                    .modifier(TextModifier2())
+                                    .foregroundColor(.gray)
+                            }
+                            .modifier(VstackModifier())
                         }
-                        .modifier(VstackModifier())
                     }
                 }.padding(.horizontal)
             }

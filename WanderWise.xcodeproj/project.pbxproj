@@ -16,6 +16,8 @@
 		5C2BFC212C469EA1008F3F40 /* TrendingCreatorsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2BFC202C469EA1008F3F40 /* TrendingCreatorsModel.swift */; };
 		5C2BFC232C469F01008F3F40 /* DiscoverCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2BFC222C469F01008F3F40 /* DiscoverCategoriesView.swift */; };
 		5C2BFC272C46D372008F3F40 /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2BFC262C46D372008F3F40 /* ViewModifiers.swift */; };
+		5C2BFC2B2C47DF61008F3F40 /* DiscoverCategoriesDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2BFC2A2C47DF61008F3F40 /* DiscoverCategoriesDetailView.swift */; };
+		5C2BFC2D2C47EFAC008F3F40 /* DiscoverDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2BFC2C2C47EFAC008F3F40 /* DiscoverDetailModel.swift */; };
 		5C486B392C43DB340012B925 /* WanderWiseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C486B382C43DB340012B925 /* WanderWiseApp.swift */; };
 		5C486B3B2C43DB340012B925 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C486B3A2C43DB340012B925 /* MainView.swift */; };
 		5C486B3D2C43DB350012B925 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C486B3C2C43DB350012B925 /* Assets.xcassets */; };
@@ -32,6 +34,8 @@
 		5C2BFC202C469EA1008F3F40 /* TrendingCreatorsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingCreatorsModel.swift; sourceTree = "<group>"; };
 		5C2BFC222C469F01008F3F40 /* DiscoverCategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCategoriesView.swift; sourceTree = "<group>"; };
 		5C2BFC262C46D372008F3F40 /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
+		5C2BFC2A2C47DF61008F3F40 /* DiscoverCategoriesDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCategoriesDetailView.swift; sourceTree = "<group>"; };
+		5C2BFC2C2C47EFAC008F3F40 /* DiscoverDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverDetailModel.swift; sourceTree = "<group>"; };
 		5C486B352C43DB340012B925 /* WanderWise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WanderWise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C486B382C43DB340012B925 /* WanderWiseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WanderWiseApp.swift; sourceTree = "<group>"; };
 		5C486B3A2C43DB340012B925 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -63,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				5C2BFC1A2C469E29008F3F40 /* DiscoverModel.swift */,
+				5C2BFC2C2C47EFAC008F3F40 /* DiscoverDetailModel.swift */,
 				5C2BFC1C2C469E5F008F3F40 /* PopularDestinationsModel.swift */,
 				5C2BFC1E2C469E83008F3F40 /* PopularRestaurantsModel.swift */,
 				5C2BFC202C469EA1008F3F40 /* TrendingCreatorsModel.swift */,
@@ -74,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				5C2BFC222C469F01008F3F40 /* DiscoverCategoriesView.swift */,
+				5C2BFC2A2C47DF61008F3F40 /* DiscoverCategoriesDetailView.swift */,
 				5C2BFC112C469D24008F3F40 /* PopularDestinationsView.swift */,
 				5C2BFC132C469D53008F3F40 /* PopularRestaurantsView.swift */,
 				5C2BFC152C469D70008F3F40 /* TrendingCreatorsView.swift */,
@@ -197,9 +203,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C2BFC1F2C469E83008F3F40 /* PopularRestaurantsModel.swift in Sources */,
+				5C2BFC2D2C47EFAC008F3F40 /* DiscoverDetailModel.swift in Sources */,
 				5C2BFC1D2C469E5F008F3F40 /* PopularDestinationsModel.swift in Sources */,
 				5C2BFC212C469EA1008F3F40 /* TrendingCreatorsModel.swift in Sources */,
 				5C2BFC1B2C469E29008F3F40 /* DiscoverModel.swift in Sources */,
+				5C2BFC2B2C47DF61008F3F40 /* DiscoverCategoriesDetailView.swift in Sources */,
 				5C2BFC162C469D70008F3F40 /* TrendingCreatorsView.swift in Sources */,
 				5C2BFC232C469F01008F3F40 /* DiscoverCategoriesView.swift in Sources */,
 				5C2BFC122C469D24008F3F40 /* PopularDestinationsView.swift in Sources */,
