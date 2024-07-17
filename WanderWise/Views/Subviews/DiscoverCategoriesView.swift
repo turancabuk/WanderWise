@@ -20,12 +20,15 @@ struct DiscoverCategoriesView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(alignment: .top, spacing: 12){
                 ForEach(categories, id: \.self) { category in
-                    VStack(spacing: 16) {
-                        Image(systemName: category.image)
-                            .modifier(ImageModifier())
-                        Text(category.name)
-                            .modifier(TextModifier())
-                    }.frame(width: 68)
+                    NavigationLink(destination: DiscoverCategoriesDetailView()) {
+                        VStack(spacing: 16) {
+                            Image(systemName: category.image)
+                                .modifier(ImageModifier())
+                            Text(category.name)
+                                .modifier(TextModifier())
+                        }.frame(width: 68)
+
+                    }
                 }
             }.padding()
         }

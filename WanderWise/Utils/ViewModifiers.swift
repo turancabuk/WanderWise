@@ -7,6 +7,14 @@
 
 import SwiftUI
 
+struct TileModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .background(Color.white)
+            .cornerRadius(5)
+            .shadow(color: .init(.sRGB, white: 0.8, opacity: 1), radius: 4, x: 0.0, y: 2)
+    }
+}
 struct CustomModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -80,6 +88,7 @@ struct TextModifier2: ViewModifier {
 struct HstackModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
+            .foregroundColor(.black)
             .frame(width: 250)
             .shadow(color: .gray, radius: 4, x: 0, y: 2)
             .background(Color.white)
@@ -97,7 +106,7 @@ struct VstackModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .padding(.horizontal, 6)
-                .padding(.bottom, 6)
+            .padding(.bottom, 6)
             .frame(width: 125, height: 150)
             .background(Color.white)
             .cornerRadius(5)
