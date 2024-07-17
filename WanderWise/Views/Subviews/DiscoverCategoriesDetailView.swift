@@ -9,27 +9,34 @@ import SwiftUI
 
 struct DiscoverCategoriesDetailView: View {
     
-    let discoverDetail: [DiscoverDetailModel] = [
-        .init(name: "Painter Shop", image: "art1"),
-        .init(name: "Museum", image: "art2")
-    ]
+    @ObservedObject var vm = DiscoverCategoriesDetailViewModel()
+    
+    
     var body: some View {
-        ScrollView{
-            ForEach(discoverDetail, id: \.self) { detail in
-                VStack(alignment: .leading){
-                    Image(detail.image)
-                        .resizable()
-                        .scaledToFill()
-                    Text(detail.name)
-                        .font(.system(size: 12, weight: .semibold))
-                        .padding()
-                }.modifier(TileModifier())
-                    .padding()
+        ZStack{
+            if vm.isLoading {
+                VStack(spacing: 20){
+                    ActivityIndicatorView()
+                    Text("Loading")
+                }
+            }else{
+                ScrollView{
+                    ForEach(vm.places, id: \.self) { detail in
+                        VStack(alignment: .leading){
+                            Image("art1")
+                                .resizable()
+                                .scaledToFill()
+                            Text("demo")
+                                .font(.system(size: 12, weight: .semibold))
+                                .padding()
+                        }.modifier(TileModifier())
+                            .padding()
+                    }
+                }.navigationBarTitle("Category", displayMode: .inline)
             }
-        }.navigationBarTitle("Category", displayMode: .inline)
+        }
     }
 }
-
 #Preview {
     DiscoverCategoriesDetailView()
 }
