@@ -20,7 +20,7 @@ struct DiscoverCategoriesView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(alignment: .top, spacing: 12){
                 ForEach(categories, id: \.self) { category in
-                    NavigationLink(destination: DiscoverCategoriesDetailView(name: category.name)) {
+                    NavigationLink(destination: NavigationLazyView(DiscoverCategoriesDetailView(name: category.name))) {
                         VStack(spacing: 16) {
                             Image(systemName: category.image)
                                 .modifier(ImageModifier())
@@ -32,6 +32,15 @@ struct DiscoverCategoriesView: View {
                 }
             }.padding()
         }
+    }
+}
+struct NavigationLazyView<Content: View>: View {
+    let build: () -> Content
+    init(_ build: @autoclosure @escaping () -> Content) {
+        self.build = build
+    }
+    var body: Content {
+        build()
     }
 }
 #Preview {
