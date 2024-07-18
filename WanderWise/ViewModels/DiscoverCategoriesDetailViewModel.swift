@@ -16,7 +16,7 @@ class DiscoverCategoriesDetailViewModel: ObservableObject {
         guard let url = URL(string: "https://travel.letsbuildthatapp.com/travel_discovery/category?name=art") else {return}
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1 ) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2 ) {
                 guard let data = data else {return}
                 do{
                     self.places = try JSONDecoder().decode([Places].self, from: data)
@@ -27,20 +27,4 @@ class DiscoverCategoriesDetailViewModel: ObservableObject {
             }
         }.resume()
     }
-}
-
-struct ActivityIndicatorView: UIViewRepresentable {
-    func makeUIView(context: Context) -> UIActivityIndicatorView {
-        let aiv = UIActivityIndicatorView(style: .large)
-        aiv.startAnimating()
-        return aiv
-    }
-    
-    func updateUIView(_ uiView: UIActivityIndicatorView, context: Context) {
-        
-    }
-    
-    typealias UIViewType = UIActivityIndicatorView
-    
-    
 }

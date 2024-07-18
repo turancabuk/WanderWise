@@ -23,6 +23,8 @@
 		5C486B3B2C43DB340012B925 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C486B3A2C43DB340012B925 /* MainView.swift */; };
 		5C486B3D2C43DB350012B925 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C486B3C2C43DB350012B925 /* Assets.xcassets */; };
 		5C486B402C43DB350012B925 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C486B3F2C43DB350012B925 /* Preview Assets.xcassets */; };
+		5C831D242C48FD58009CEAC5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5C831D232C48FD58009CEAC5 /* Kingfisher */; };
+		5C831D262C48FEE2009CEAC5 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C831D252C48FEE2009CEAC5 /* ActivityIndicatorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,7 @@
 		5C486B3A2C43DB340012B925 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		5C486B3C2C43DB350012B925 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C486B3F2C43DB350012B925 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5C831D252C48FEE2009CEAC5 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C831D242C48FD58009CEAC5 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				5C2BFC262C46D372008F3F40 /* ViewModifiers.swift */,
+				5C831D252C48FEE2009CEAC5 /* ActivityIndicatorView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -159,6 +164,9 @@
 			dependencies = (
 			);
 			name = WanderWise;
+			packageProductDependencies = (
+				5C831D232C48FD58009CEAC5 /* Kingfisher */,
+			);
 			productName = WanderWise;
 			productReference = 5C486B352C43DB340012B925 /* WanderWise.app */;
 			productType = "com.apple.product-type.application";
@@ -187,6 +195,9 @@
 				Base,
 			);
 			mainGroup = 5C486B2C2C43DB340012B925;
+			packageReferences = (
+				5C831D222C48FD58009CEAC5 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 5C486B362C43DB340012B925 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -219,6 +230,7 @@
 				5C2BFC212C469EA1008F3F40 /* TrendingCreatorsModel.swift in Sources */,
 				5C2BFC1B2C469E29008F3F40 /* DiscoverModel.swift in Sources */,
 				5C2BFC2B2C47DF61008F3F40 /* DiscoverCategoriesDetailView.swift in Sources */,
+				5C831D262C48FEE2009CEAC5 /* ActivityIndicatorView.swift in Sources */,
 				5C2BFC162C469D70008F3F40 /* TrendingCreatorsView.swift in Sources */,
 				5C2BFC232C469F01008F3F40 /* DiscoverCategoriesView.swift in Sources */,
 				5C2BFC302C484BA7008F3F40 /* DiscoverCategoriesDetailViewModel.swift in Sources */,
@@ -432,6 +444,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5C831D222C48FD58009CEAC5 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5C831D232C48FD58009CEAC5 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C831D222C48FD58009CEAC5 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5C486B2D2C43DB340012B925 /* Project object */;
 }
