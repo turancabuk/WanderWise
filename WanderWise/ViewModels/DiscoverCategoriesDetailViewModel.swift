@@ -17,13 +17,15 @@ class DiscoverCategoriesDetailViewModel: ObservableObject {
         guard let url = URL(string: "https://travel.letsbuildthatapp.com/travel_discovery/category?name=\(name.lowercased())") else {return}
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 400 {
-                self.isLoading = false
-                self.errorMessage = "Bad status \(statusCode)"
-                return
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 guard let data = data else {return}
+                
+                if let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 400 {
+                    self.isLoading = false
+                    self.errorMessage = "Bad status \(statusCode)"
+                    return
+                }
+                
                 do{
                     self.places = try JSONDecoder().decode([Places].self, from: data)
                 }catch{
