@@ -21,12 +21,12 @@ struct DiscoverCategoriesDetailView: View {
                 }
             }else{
                 ScrollView{
-                    ForEach(vm.places, id: \.self) { detail in
+                    ForEach(vm.places, id: \.self) { place in
                         VStack(alignment: .leading){
                             Image("art1")
                                 .resizable()
                                 .scaledToFill()
-                            Text("demo")
+                            Text(place.name)
                                 .font(.system(size: 12, weight: .semibold))
                                 .padding()
                         }.modifier(TileModifier())
