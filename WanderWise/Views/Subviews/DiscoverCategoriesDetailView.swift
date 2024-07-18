@@ -10,9 +10,13 @@ import Kingfisher
 
 struct DiscoverCategoriesDetailView: View {
     
-    @ObservedObject var vm = DiscoverCategoriesDetailViewModel()
+    @ObservedObject var vm: DiscoverCategoriesDetailViewModel
+    private let name: String
     
-    
+    init(name: String) {
+        self.name = name
+        self.vm = .init(name: name)
+    }
     var body: some View {
         ZStack{
             if vm.isLoading {
@@ -21,6 +25,17 @@ struct DiscoverCategoriesDetailView: View {
                     Text("Loading")
                 }
             }else{
+                ZStack{
+                    if !vm.errorMessage.isEmpty {
+                        VStack(spacing: 20){
+                            Image(systemName: "xmark.octagon.fill")
+                                .font(.system(size: 64, weight: .semibold))
+                                .foregroundColor(.red)
+                            Text(vm.errorMessage)
+                                .font(.system(size: 16, weight: .semibold))
+                        }
+                    }
+                }
                 ScrollView{
                     ForEach(vm.places, id: \.self) { place in
                         VStack(alignment: .leading){
@@ -33,11 +48,12 @@ struct DiscoverCategoriesDetailView: View {
                         }.modifier(TileModifier())
                             .padding()
                     }
-                }.navigationBarTitle("Category", displayMode: .inline)
+                }.navigationBarTitle(name, displayMode: .inline)
             }
         }
     }
 }
 #Preview {
-    DiscoverCategoriesDetailView()
+    DiscoverCategoriesDetailView(name: "")
 }
+
