@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct DiscoverCategoriesDetailView: View {
     
@@ -23,7 +24,7 @@ struct DiscoverCategoriesDetailView: View {
                 ScrollView{
                     ForEach(vm.places, id: \.self) { place in
                         VStack(alignment: .leading){
-                            Image("art1")
+                            KFImage(URL(string: place.thumbnail))
                                 .resizable()
                                 .scaledToFill()
                             Text(place.name)
