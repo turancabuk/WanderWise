@@ -11,7 +11,7 @@ struct DiscoverCategoriesView: View {
     
     let categories: [DiscoverCategories] = [
         .init(name: "Art", image: "paintpalette.fill"),
-        .init(name: "Sport", image: "sportscourt.fill"),
+        .init(name: "Sports", image: "sportscourt.fill"),
         .init(name: "Live Events", image: "music.mic"),
         .init(name: "Food", image: "fork.knife.circle.fill"),
         .init(name: "History", image: "books.vertical.fill"),
@@ -20,7 +20,7 @@ struct DiscoverCategoriesView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(alignment: .top, spacing: 12){
                 ForEach(categories, id: \.self) { category in
-                    NavigationLink(destination: DiscoverCategoriesDetailView()) {
+                    NavigationLink(destination: DiscoverCategoriesDetailView(name: category.name)) {
                         VStack(spacing: 16) {
                             Image(systemName: category.image)
                                 .modifier(ImageModifier())
@@ -36,4 +36,5 @@ struct DiscoverCategoriesView: View {
 }
 #Preview {
     DiscoverCategoriesView()
+    
 }
