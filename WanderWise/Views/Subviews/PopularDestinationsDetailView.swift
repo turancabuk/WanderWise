@@ -12,14 +12,22 @@ struct PopularDestinationsDetailView: View {
     
     let destination: PopularDestinations
     @State var region: MKCoordinateRegion
+    @State var toggleIsOn = false
     
     init(destination: PopularDestinations){
         self.destination = destination
         self.region = MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: destination.latitude, longitude: destination.longitudee),
-            span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+            span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         )
     }
+    
+    let attractions: [AttractionModel] = [
+        .init(name: "Eiffel Tower", latitude: 48.859565, longitude: 2.353235),
+        .init(name: "Champs-Elysees", latitude: 48.866867, longitude: 2.311780),
+        .init(name: "Louvre Museum", latitude: 48.860288, longitude: 2.337789)
+    ]
+    
     var body: some View {
         ScrollView{
             Image(destination.image)
@@ -43,15 +51,28 @@ struct PopularDestinationsDetailView: View {
                 Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
                     .font(.system(size: 14, weight: .medium))
                     .padding(.bottom)
-                Text("Location")
-                    .font(.system(size: 18, weight: .bold))
-                Map(coordinateRegion: .constant(region))
-                    .frame(height: 200)
+                HStack{
+                    Text("Location")
+                        .font(.system(size: 18, weight: .bold))
+                    Spacer()
+                    Button(action: {toggleIsOn.toggle()}, label: {
+                        Text("\(toggleIsOn ? "Hide" : "Show") Attractions")
+                    })
+                    .font(.system(size: 14, weight: .bold))
+                    Toggle("", isOn: $toggleIsOn)
+                        .foregroundColor(.blue)
+                        .font(.system(size: 14, weight: .bold))
+                        .labelsHidden()
+                }
+                Map(coordinateRegion: $region, annotationItems: toggleIsOn ? attractions : []) { attraction in
+                    MapMarker(coordinate: .init(latitude: attraction.latitude, longitude: attraction.longitude), tint: .blue)
+                }
+                    .frame(height: 300)
             }.padding(.horizontal)
         }.navigationBarTitle(destination.city, displayMode: .inline)
             .padding(.top, 6)
     }
 }
 #Preview {
-    PopularDestinationsDetailView(destination: PopularDestinations(country: "France", city: "Paris", image: "eiffel_tower", latitude: 35.67988, longitudee: 139.7695))
+    PopularDestinationsDetailView(destination: PopularDestinations(country: "France", city: "Paris", image: "eiffel_tower", latitude: 48.859565, longitudee: 2.353235))
 }
