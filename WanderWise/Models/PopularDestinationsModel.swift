@@ -9,4 +9,5 @@ import Foundation
 
 struct PopularDestinations: Hashable{
     let country, city, image: String
+    let latitude, longitudee: Double
 }

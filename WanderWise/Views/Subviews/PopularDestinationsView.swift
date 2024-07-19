@@ -11,9 +11,9 @@ import SwiftUI
 struct PopularDestinationsView: View {
     
     let destinations: [PopularDestinations] = [
-        .init(country: "France", city: "Paris", image: "eiffel_tower"),
-        .init(country: "Japan", city: "Tokyo", image: "japan"),
-        .init(country: "New York", city: "Seattle", image: "new_york"),
+        .init(country: "France", city: "Paris", image: "eiffel_tower", latitude: 48.855014, longitudee: 2.341231),
+        .init(country: "Japan", city: "Tokyo", image: "japan", latitude: 35.67988, longitudee: 139.7695),
+        .init(country: "United States", city: "New York", image: "new_york", latitude: 40.71592, longitudee: -74.0055),
     ]
     var body: some View {
         VStack{
