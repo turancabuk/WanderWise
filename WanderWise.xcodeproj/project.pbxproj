@@ -25,6 +25,7 @@
 		5C486B402C43DB350012B925 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C486B3F2C43DB350012B925 /* Preview Assets.xcassets */; };
 		5C831D242C48FD58009CEAC5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5C831D232C48FD58009CEAC5 /* Kingfisher */; };
 		5C831D262C48FEE2009CEAC5 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C831D252C48FEE2009CEAC5 /* ActivityIndicatorView.swift */; };
+		5C831D2C2C495751009CEAC5 /* PopularDestinationsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C831D2B2C495751009CEAC5 /* PopularDestinationsDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		5C486B3C2C43DB350012B925 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C486B3F2C43DB350012B925 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5C831D252C48FEE2009CEAC5 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
+		5C831D2B2C495751009CEAC5 /* PopularDestinationsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularDestinationsDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				5C2BFC222C469F01008F3F40 /* DiscoverCategoriesView.swift */,
 				5C2BFC2A2C47DF61008F3F40 /* DiscoverCategoriesDetailView.swift */,
 				5C2BFC112C469D24008F3F40 /* PopularDestinationsView.swift */,
+				5C831D2B2C495751009CEAC5 /* PopularDestinationsDetailView.swift */,
 				5C2BFC132C469D53008F3F40 /* PopularRestaurantsView.swift */,
 				5C2BFC152C469D70008F3F40 /* TrendingCreatorsView.swift */,
 			);
@@ -228,6 +231,7 @@
 				5C2BFC2D2C47EFAC008F3F40 /* Places.swift in Sources */,
 				5C2BFC1D2C469E5F008F3F40 /* PopularDestinationsModel.swift in Sources */,
 				5C2BFC212C469EA1008F3F40 /* TrendingCreatorsModel.swift in Sources */,
+				5C831D2C2C495751009CEAC5 /* PopularDestinationsDetailView.swift in Sources */,
 				5C2BFC1B2C469E29008F3F40 /* DiscoverModel.swift in Sources */,
 				5C2BFC2B2C47DF61008F3F40 /* DiscoverCategoriesDetailView.swift in Sources */,
 				5C831D262C48FEE2009CEAC5 /* ActivityIndicatorView.swift in Sources */,
