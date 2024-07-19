@@ -23,9 +23,9 @@ struct PopularDestinationsDetailView: View {
     }
     
     let attractions: [AttractionModel] = [
-        .init(name: "Eiffel Tower", latitude: 48.859565, longitude: 2.353235),
-        .init(name: "Champs-Elysees", latitude: 48.866867, longitude: 2.311780),
-        .init(name: "Louvre Museum", latitude: 48.860288, longitude: 2.337789)
+        .init(name: "Eiffel Tower", image: "eiffel_tower", latitude: 48.859565, longitude: 2.353235),
+        .init(name: "Champs-Elysees", image: "Champs-Elysees", latitude: 48.866867, longitude: 2.311780),
+        .init(name: "Louvre Museum", image: "Louvre Museum", latitude: 48.860288, longitude: 2.337789)
     ]
     
     var body: some View {
@@ -65,12 +65,36 @@ struct PopularDestinationsDetailView: View {
                         .labelsHidden()
                 }
                 Map(coordinateRegion: $region, annotationItems: toggleIsOn ? attractions : []) { attraction in
-                    MapMarker(coordinate: .init(latitude: attraction.latitude, longitude: attraction.longitude), tint: .blue)
+                    MapAnnotation(coordinate: .init(latitude: attraction.latitude, longitude: attraction.longitude)) {
+                        AttractionView(attraction: attraction)
+                    }
                 }
-                    .frame(height: 300)
+                .frame(height: 300)
             }.padding(.horizontal)
         }.navigationBarTitle(destination.city, displayMode: .inline)
             .padding(.top, 6)
+    }
+}
+struct AttractionView: View {
+    
+    let attraction: AttractionModel
+    
+    var body: some View {
+        VStack{
+            Image(attraction.image)
+                .resizable()
+                .frame(width: 80, height: 80)
+                .cornerRadius(.infinity)
+                .scaledToFill()
+            
+            Text(attraction.name)
+                .foregroundColor(.white)
+                .padding(.horizontal, 6)
+                .padding(.vertical, 4)
+                .background(LinearGradient(
+                    colors: [.red, .blue], startPoint: .leading, endPoint: .trailing))
+        }
+        .shadow(color: .black, radius: 5)
     }
 }
 #Preview {

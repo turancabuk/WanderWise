@@ -14,6 +14,6 @@ struct PopularDestinations: Hashable{
 
 struct AttractionModel: Identifiable {
     var id = UUID().uuidString
-    let name: String
+    let name, image: String
     let latitude, longitude: Double
 }
