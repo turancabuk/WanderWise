@@ -19,6 +19,7 @@ struct PopularRestaurantsView: View {
             HStack{
                 Text("Popular places to eat")
                     .font(.system(size: 14, weight: .semibold))
+                    .foregroundStyle(.black)
                 Spacer()
                 Text("See all")
                     .font(.system(size: 12, weight: .semibold))

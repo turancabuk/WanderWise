@@ -10,7 +10,7 @@ import SwiftUI
 
 struct PopularDestinationsView: View {
     
-    let categories: [PopularDestinations] = [
+    let destinations: [PopularDestinations] = [
         .init(country: "France", city: "Paris", image: "eiffel_tower"),
         .init(country: "Japan", city: "Tokyo", image: "japan"),
         .init(country: "New York", city: "Seattle", image: "new_york"),
@@ -20,32 +20,41 @@ struct PopularDestinationsView: View {
             HStack{
                 Text("Popular Destinations")
                     .font(.system(size: 14, weight: .semibold))
+                    .foregroundColor(.black)
                 Spacer()
                 Text("See all")
                     .font(.system(size: 12, weight: .semibold))
             }.padding(.horizontal)
-             .padding(.top)
+                .padding(.top)
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 8.0){
-                    ForEach(categories, id: \.self) { category in
-                        NavigationLink(destination: Text("Destination2")) {
-                            VStack(alignment: .leading, spacing: 2){
-                                Image(category.image)
-                                    .resizable()
-                                    .modifier(ImageModifier2())
-                                Text(category.city)
-                                    .modifier(TextModifier2())
-                                    .foregroundColor(.black)
-                                Text(category.country)
-                                    .modifier(TextModifier2())
-                                    .foregroundColor(.gray)
-                            }
-                            .modifier(VstackModifier())
+                    ForEach(destinations, id: \.self) { destination in
+                        NavigationLink(destination: PopularDestinationsDetailView(destination: destination)) {
+                            PopularDestinationsRow(destination: destination)
                         }
                     }
                 }.padding(.horizontal)
             }
         }
+    }
+}
+struct PopularDestinationsRow: View {
+    
+    let destination: PopularDestinations
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 2){
+            Image(destination.image)
+                .resizable()
+                .modifier(ImageModifier2())
+            Text(destination.city)
+                .modifier(TextModifier2())
+                .foregroundColor(.black)
+            Text(destination.country)
+                .modifier(TextModifier2())
+                .foregroundColor(.gray)
+        }
+        .modifier(VstackModifier())
     }
 }
 #Preview {
