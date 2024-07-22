@@ -9,7 +9,7 @@ import SwiftUI
 
 class DiscoverCategoriesDetailViewModel: ObservableObject {
     @Published var isLoading = true
-    @Published var places = [Places]()
+    @Published var places = [DiscoverDetailModel]()
     @Published var errorMessage = ""
     
     init(name: String) {
@@ -27,7 +27,7 @@ class DiscoverCategoriesDetailViewModel: ObservableObject {
                 }
                 
                 do{
-                    self.places = try JSONDecoder().decode([Places].self, from: data)
+                    self.places = try JSONDecoder().decode([DiscoverDetailModel].self, from: data)
                 }catch{
                     print("Failed to decod JSON data", error.localizedDescription)
                 }
