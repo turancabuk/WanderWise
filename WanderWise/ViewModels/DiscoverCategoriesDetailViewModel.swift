@@ -17,7 +17,7 @@ class DiscoverCategoriesDetailViewModel: ObservableObject {
         guard let url = URL(string: "https://travel.letsbuildthatapp.com/travel_discovery/category?name=\(name.lowercased())") else {return}
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
                 guard let data = data else {return}
                 
                 if let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 400 {

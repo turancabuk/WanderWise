@@ -11,6 +11,7 @@ import MapKit
 struct PopularDestinationsDetailView: View {
     
     let destination: PopularDestinations
+    var attractions: [AttractionModel] = []
     @State var region: MKCoordinateRegion
     @State var toggleIsOn = false
     
@@ -20,20 +21,41 @@ struct PopularDestinationsDetailView: View {
             center: CLLocationCoordinate2D(latitude: destination.latitude, longitude: destination.longitudee),
             span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         )
+        switch destination.city {
+        case "Paris":
+            self.attractions = [
+                .init(name: "Eiffel Tower", image: "eiffel_tower", latitude: 48.859565, longitude: 2.353235),
+                .init(name: "Champs-Elysees", image: "Champs-Elysees", latitude: 48.866867, longitude: 2.311780),
+                .init(name: "Louvre Museum", image: "Louvre Museum", latitude: 48.860288, longitude: 2.337789)
+            ]
+        case "Tokyo":
+            self.attractions = [
+                .init(name: "Tokyo Tower", image: "tokyo_tower", latitude: 35.6586, longitude: 139.7454),
+                .init(name: "Sensoji Temple", image: "sensoji", latitude: 35.7148, longitude: 139.7967),
+                .init(name: "Shibuya Crossing", image: "shibuya_crossing", latitude: 35.6595, longitude: 139.7005)
+            ]
+        case "New York":
+            self.attractions = [
+                .init(name: "Statue of Liberty", image: "statue_of_liberty", latitude: 40.6892, longitude: -74.0445),
+                .init(name: "Times Square", image: "times_square", latitude: 40.7580, longitude: -73.9855),
+                .init(name: "Central Park", image: "central_park", latitude: 40.7851, longitude: -73.9683)
+            ]
+        default:
+            break
+        }
     }
     
-    let attractions: [AttractionModel] = [
-        .init(name: "Eiffel Tower", image: "eiffel_tower", latitude: 48.859565, longitude: 2.353235),
-        .init(name: "Champs-Elysees", image: "Champs-Elysees", latitude: 48.866867, longitude: 2.311780),
-        .init(name: "Louvre Museum", image: "Louvre Museum", latitude: 48.860288, longitude: 2.337789)
-    ]
     
     var body: some View {
         ScrollView{
-            Image(destination.image)
-                .resizable()
-                .scaledToFill()
-                .padding(.horizontal, 6)
+            TabView{
+                ForEach(destination.image, id: \.self) { destinationPic in
+                    Image(destinationPic)
+                        .resizable()
+                        .scaledToFill()
+                }
+            }.tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+                .frame(height: 250)
             VStack(alignment: .leading){
                 Text(destination.city)
                     .font(.system(size: 18, weight: .bold))
@@ -68,7 +90,7 @@ struct PopularDestinationsDetailView: View {
                     MapAnnotation(coordinate: .init(latitude: attraction.latitude, longitude: attraction.longitude)) {
                         AttractionView(attraction: attraction)
                     }
-                }
+                }                
                 .frame(height: 300)
             }.padding(.horizontal)
         }.navigationBarTitle(destination.city, displayMode: .inline)
@@ -98,5 +120,6 @@ struct AttractionView: View {
     }
 }
 #Preview {
-    PopularDestinationsDetailView(destination: PopularDestinations(country: "France", city: "Paris", image: "eiffel_tower", latitude: 48.859565, longitudee: 2.353235))
+    
+    PopularDestinationsDetailView(destination: PopularDestinations(country: "France", city: "Paris", image: ["eiffel_tower", "japan", "new_york"], latitude: 48.859565, longitudee: 2.353235))
 }
