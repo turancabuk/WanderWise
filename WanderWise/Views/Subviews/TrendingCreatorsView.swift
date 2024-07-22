@@ -20,6 +20,7 @@ struct TrendingCreatorsView: View {
             HStack{
                 Text("Trending creators")
                     .font(.system(size: 14, weight: .semibold))
+                    .foregroundColor(.black)
                 Spacer()
                 Text("See all")
                     .font(.system(size: 12, weight: .semibold))

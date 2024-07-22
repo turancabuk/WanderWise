@@ -10,44 +10,62 @@ import SwiftUI
 
 struct PopularDestinationsView: View {
     
-    let categories: [PopularDestinations] = [
-        .init(country: "France", city: "Paris", image: "eiffel_tower"),
-        .init(country: "Japan", city: "Tokyo", image: "japan"),
-        .init(country: "New York", city: "Seattle", image: "new_york"),
-    ]
+    @ObservedObject var viewModel = PopularDestinationsViewModel()
+    
     var body: some View {
-        VStack{
-            HStack{
+        VStack {
+            HStack {
                 Text("Popular Destinations")
                     .font(.system(size: 14, weight: .semibold))
+                    .foregroundColor(.black)
                 Spacer()
                 Text("See all")
                     .font(.system(size: 12, weight: .semibold))
-            }.padding(.horizontal)
-             .padding(.top)
+            }
+            .padding(.horizontal)
+            .padding(.top)
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 8.0){
-                    ForEach(categories, id: \.self) { category in
-                        NavigationLink(destination: Text("Destination2")) {
-                            VStack(alignment: .leading, spacing: 2){
-                                Image(category.image)
-                                    .resizable()
-                                    .modifier(ImageModifier2())
-                                Text(category.city)
-                                    .modifier(TextModifier2())
-                                    .foregroundColor(.black)
-                                Text(category.country)
-                                    .modifier(TextModifier2())
-                                    .foregroundColor(.gray)
-                            }
-                            .modifier(VstackModifier())
+                HStack(spacing: 12) {
+                    ForEach(viewModel.cityDestinations, id: \.self) { destination in
+                        NavigationLink(destination: PopularDestinationsDetailView(viewModel: viewModel, destination: destination)) {
+                            PopularDestinationsRow(destination: destination)
                         }
                     }
-                }.padding(.horizontal)
+                }.padding(12)
+            }
+            .onAppear {
+                viewModel.fetchDestinations()
             }
         }
     }
 }
+struct PopularDestinationsRow: View {
+    
+    let destination: PopularDestinations
+    
+    var body: some View {
+        VStack(alignment: .leading){
+            Image(destination.image.first!)
+                .resizable()
+                .modifier(ImageModifier2())
+            Text(destination.city)
+                .modifier(TextModifier2())
+                .foregroundColor(.black)
+            Text(destination.country)
+                .modifier(TextModifier2())
+                .foregroundColor(.gray)
+        }
+        .modifier(VstackModifier())
+    }
+}
 #Preview {
-    PopularDestinationsView()
+    let viewModel = PopularDestinationsViewModel()
+    viewModel.selectDestination(PopularDestinations(
+        country: "France",
+        city: "Paris",
+        image: ["eiffel_tower", "paris2", "paris3"],
+        latitude: 48.855014,
+        longitudee: 2.341231
+    ))
+    return PopularDestinationsView(viewModel: viewModel)
 }
