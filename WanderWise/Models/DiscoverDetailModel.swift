@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct Places: Decodable, Hashable {
+struct DiscoverDetailModel: Decodable, Hashable {
     let name, thumbnail: String
 }

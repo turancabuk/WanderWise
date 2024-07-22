@@ -10,41 +10,8 @@ import MapKit
 
 struct PopularDestinationsDetailView: View {
     
+    @ObservedObject var viewModel: PopularDestinationsViewModel
     let destination: PopularDestinations
-    var attractions: [AttractionModel] = []
-    @State var region: MKCoordinateRegion
-    @State var toggleIsOn = false
-    
-    init(destination: PopularDestinations){
-        self.destination = destination
-        self.region = MKCoordinateRegion(
-            center: CLLocationCoordinate2D(latitude: destination.latitude, longitude: destination.longitudee),
-            span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-        )
-        switch destination.city {
-        case "Paris":
-            self.attractions = [
-                .init(name: "Eiffel Tower", image: "eiffel_tower", latitude: 48.859565, longitude: 2.353235),
-                .init(name: "Champs-Elysees", image: "Champs-Elysees", latitude: 48.866867, longitude: 2.311780),
-                .init(name: "Louvre Museum", image: "Louvre Museum", latitude: 48.860288, longitude: 2.337789)
-            ]
-        case "Tokyo":
-            self.attractions = [
-                .init(name: "Tokyo Tower", image: "tokyo_tower", latitude: 35.6586, longitude: 139.7454),
-                .init(name: "Sensoji Temple", image: "sensoji", latitude: 35.7148, longitude: 139.7967),
-                .init(name: "Shibuya Crossing", image: "shibuya_crossing", latitude: 35.6595, longitude: 139.7005)
-            ]
-        case "New York":
-            self.attractions = [
-                .init(name: "Statue of Liberty", image: "statue_of_liberty", latitude: 40.6892, longitude: -74.0445),
-                .init(name: "Times Square", image: "times_square", latitude: 40.7580, longitude: -73.9855),
-                .init(name: "Central Park", image: "central_park", latitude: 40.7851, longitude: -73.9683)
-            ]
-        default:
-            break
-        }
-    }
-    
     
     var body: some View {
         ScrollView{
@@ -77,24 +44,27 @@ struct PopularDestinationsDetailView: View {
                     Text("Location")
                         .font(.system(size: 18, weight: .bold))
                     Spacer()
-                    Button(action: {toggleIsOn.toggle()}, label: {
-                        Text("\(toggleIsOn ? "Hide" : "Show") Attractions")
+                    Button(action: { viewModel.toggleIsOn.toggle() }, label: {
+                        Text("\(viewModel.toggleIsOn ? "Hide" : "Show") Attractions")
                     })
                     .font(.system(size: 14, weight: .bold))
-                    Toggle("", isOn: $toggleIsOn)
+                    Toggle("", isOn: $viewModel.toggleIsOn)
                         .foregroundColor(.blue)
                         .font(.system(size: 14, weight: .bold))
                         .labelsHidden()
                 }
-                Map(coordinateRegion: $region, annotationItems: toggleIsOn ? attractions : []) { attraction in
+                Map(coordinateRegion: $viewModel.region, annotationItems: viewModel.toggleIsOn ? viewModel.attractions : []) { attraction in
                     MapAnnotation(coordinate: .init(latitude: attraction.latitude, longitude: attraction.longitude)) {
                         AttractionView(attraction: attraction)
                     }
-                }                
+                }
                 .frame(height: 300)
             }.padding(.horizontal)
-        }.navigationBarTitle(destination.city, displayMode: .inline)
+        }.navigationBarTitle(viewModel.selectedDestination?.city ?? "", displayMode: .inline)
             .padding(.top, 6)
+            .onAppear {
+                viewModel.selectDestination(destination)
+            }
     }
 }
 struct AttractionView: View {
@@ -120,6 +90,15 @@ struct AttractionView: View {
     }
 }
 #Preview {
+    let viewModel = PopularDestinationsViewModel()
+    let sampleDestination = PopularDestinations(
+        country: "France",
+        city: "Paris",
+        image: ["eiffel_tower", "paris2", "paris3"],
+        latitude: 48.855014,
+        longitudee: 2.341231
+    )
+    viewModel.selectDestination(sampleDestination)
     
-    PopularDestinationsDetailView(destination: PopularDestinations(country: "France", city: "Paris", image: ["eiffel_tower", "japan", "new_york"], latitude: 48.859565, longitudee: 2.353235))
+    return PopularDestinationsDetailView(viewModel: viewModel, destination: sampleDestination)
 }

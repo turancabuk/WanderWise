@@ -10,31 +10,31 @@ import SwiftUI
 
 struct PopularDestinationsView: View {
     
-    let cityDestinations: [PopularDestinations] = [
-        .init(country: "France", city: "Paris", image: ["eiffel_tower", "paris2", "paris3"], latitude: 48.855014, longitudee: 2.341231),
-        .init(country: "Japan", city: "Tokyo", image: ["japan", "tokyo2","tokyo3"], latitude: 35.67988, longitudee: 139.7695),
-        .init(country: "United States", city: "New York", image: ["new_york", "new_york2", "new_york3"], latitude: 40.71592, longitudee: -74.0055),
-    ]
+    @ObservedObject var viewModel = PopularDestinationsViewModel()
     
     var body: some View {
-        VStack{
-            HStack{
+        VStack {
+            HStack {
                 Text("Popular Destinations")
                     .font(.system(size: 14, weight: .semibold))
                     .foregroundColor(.black)
                 Spacer()
                 Text("See all")
                     .font(.system(size: 12, weight: .semibold))
-            }.padding(.horizontal)
-                .padding(.top)
+            }
+            .padding(.horizontal)
+            .padding(.top)
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 8.0){
-                    ForEach(cityDestinations, id: \.self) { destination in
-                        NavigationLink(destination: PopularDestinationsDetailView(destination: destination)) {
+                HStack(spacing: 12) {
+                    ForEach(viewModel.cityDestinations, id: \.self) { destination in
+                        NavigationLink(destination: PopularDestinationsDetailView(viewModel: viewModel, destination: destination)) {
                             PopularDestinationsRow(destination: destination)
                         }
                     }
-                }.padding(.horizontal)
+                }.padding(12)
+            }
+            .onAppear {
+                viewModel.fetchDestinations()
             }
         }
     }
@@ -44,7 +44,7 @@ struct PopularDestinationsRow: View {
     let destination: PopularDestinations
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 2){
+        VStack(alignment: .leading){
             Image(destination.image.first!)
                 .resizable()
                 .modifier(ImageModifier2())
@@ -59,5 +59,13 @@ struct PopularDestinationsRow: View {
     }
 }
 #Preview {
-    PopularDestinationsView()
+    let viewModel = PopularDestinationsViewModel()
+    viewModel.selectDestination(PopularDestinations(
+        country: "France",
+        city: "Paris",
+        image: ["eiffel_tower", "paris2", "paris3"],
+        latitude: 48.855014,
+        longitudee: 2.341231
+    ))
+    return PopularDestinationsView(viewModel: viewModel)
 }
