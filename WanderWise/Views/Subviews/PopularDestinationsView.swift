@@ -59,13 +59,5 @@ struct PopularDestinationsRow: View {
     }
 }
 #Preview {
-    let viewModel = PopularDestinationsViewModel()
-    viewModel.selectDestination(PopularDestinations(
-        country: "France",
-        city: "Paris",
-        image: ["eiffel_tower", "paris2", "paris3"],
-        latitude: 48.855014,
-        longitudee: 2.341231
-    ))
-    return PopularDestinationsView(viewModel: viewModel)
+    PopularDestinationsView()
 }
