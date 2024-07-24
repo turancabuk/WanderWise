@@ -10,6 +10,8 @@ import SwiftUI
 
 struct PopularRestaurantsView: View {
     
+    @ObservedObject var viewmodel = PopularRestaurantsDetailViewModel()
+    
     let restaurants: [PopularRestaurants] = [
         .init(name: "Japan's Finest Tapas", image: "tapas"),
         .init(name: "Bar & Grill", image: "bar_grill"),
@@ -29,7 +31,7 @@ struct PopularRestaurantsView: View {
                 HStack(spacing:8.0){
                     ForEach(restaurants, id: \.self) { restaurant in
                         NavigationLink {
-                            PopularRestaurantsDetailView(restaurant: restaurant)
+                            PopularRestaurantsDetailView()
                         } label: {
                             RestaurantsView(restaurant: restaurant)
                         }
