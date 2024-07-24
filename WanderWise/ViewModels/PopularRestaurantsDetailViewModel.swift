@@ -9,10 +9,9 @@ import SwiftUI
 
 class PopularRestaurantsDetailViewModel: ObservableObject {
     
-    @Published var popularRestaurantsDetail: [PopularRestaurantsDetailModel] = []
+    @Published var restaurantDetails: PopularRestaurantsDetailModel?
 
     init() {
-        
         guard let url = URL(string: "https://travel.letsbuildthatapp.com/travel_discovery/restaurant?id=0") else {return}
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -21,9 +20,8 @@ class PopularRestaurantsDetailViewModel: ObservableObject {
                     print("No data returned")
                     return
                 }
-               
                 do {
-                    self.popularRestaurantsDetail = try JSONDecoder().decode([PopularRestaurantsDetailModel].self, from: data)
+                    self.restaurantDetails = try JSONDecoder().decode(PopularRestaurantsDetailModel.self, from: data)
                 } catch {
                     print("Decoding error: \(error.localizedDescription)")
                 }
