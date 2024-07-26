@@ -65,15 +65,23 @@ struct RestaurantView: View {
                 .scaledToFit()
             LinearGradient(colors: [.clear, .black], startPoint: .center, endPoint: .bottom)
             VStack(alignment: .leading, spacing: 6) {
-                Spacer()
                 Text(viewmodel.restaurantDetails?.name ?? "")
                     .font(.system(size: 26, weight: .semibold))
                     .foregroundColor(.white)
-                HStack(spacing: 12) {
-                    ForEach(0...4, id: \.self) { star in
-                        Image(systemName: "star.fill")
-                            .foregroundColor(.orange)
-                            .frame(width: 12)
+                HStack {
+                    HStack(spacing: 12) {
+                        ForEach(0...4, id: \.self) { star in
+                            Image(systemName: "star.fill")
+                                .foregroundColor(.orange)
+                                .frame(width: 12)
+                        }
+                    }
+                    Spacer()
+                    NavigationLink(destination: PopularRestaurantsPhotosView(viewmodel: viewmodel)) {
+                        Text("See more photos")
+                            .font(.system(size: 14, weight: .semibold))
+                            .foregroundColor(.white)
+                            .multilineTextAlignment(.trailing)
                     }
                 }
             }.padding()
@@ -107,6 +115,7 @@ struct DishView: View {
                     Text("\(dishes.numPhotos) Photos")
                         .font(.system(size: 12, weight: .semibold))
                         .foregroundColor(.gray)
+                        .multilineTextAlignment(.trailing)
                 }
             }
         }.padding(.leading, 12)
@@ -118,37 +127,40 @@ struct ReviewView: View {
     
     var body: some View {
         ForEach(viewmodel.restaurantDetails?.reviews ?? [], id: \.self) { customer in
-            VStack() {
+            VStack(alignment: .leading ) {
                 HStack{
                     KFImage(URL(string: customer.user.profileImage))
                         .resizable()
                         .scaledToFit()
                         .frame(width: 42, height: 42)
                         .cornerRadius(.infinity)
-                    VStack {
+                    VStack(alignment: .leading) {
                         HStack {
                             Text(customer.user.firstName)
                                 .font(.system(size: 16, weight: .semibold))
                             Text(customer.user.lastName)
                                 .font(.system(size: 16, weight: .semibold))
-                        }.padding(.horizontal, 6)
-                        HStack(spacing: 12) {
-                            ForEach(0...4, id: \.self) { _ in
+                        }
+                        HStack(spacing: 4) {
+                            ForEach(0..<customer.rating, id: \.self) { _ in
                                 Image(systemName: "star.fill")
                                     .foregroundColor(.orange)
-                                    .frame(width: 6, height: 6)
                             }
-                        }
-                    }
+                            ForEach(0..<5 - customer.rating, id: \.self) { _ in
+                                Image(systemName: "star.fill")
+                                    .foregroundColor(.gray)
+                            }
+                        }.font(.system(size: 12))
+                    }.padding(.horizontal, 6)
                     Spacer()
                     Text("20 Dec 2023")
                         .font(.system(size: 12, weight: .regular))
                 }
-                Divider()
                 Text(customer.text)
                     .font(.system(size: 14, weight: .regular))
             }.padding(.horizontal)
                 .padding(.vertical, 8)
+            Divider()
         }
     }
 }
