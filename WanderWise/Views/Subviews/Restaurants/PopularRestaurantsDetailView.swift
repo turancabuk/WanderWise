@@ -78,10 +78,9 @@ struct RestaurantView: View {
                     }
                     Spacer()
                     NavigationLink(destination: PopularRestaurantsPhotosView(viewmodel: viewmodel)) {
-                        Text("See more photos")
-                            .font(.system(size: 14, weight: .semibold))
+                        Image(systemName: "photo.stack")
+                            .font(.system(size: 26))
                             .foregroundColor(.white)
-                            .multilineTextAlignment(.trailing)
                     }
                 }
             }.padding()
@@ -96,20 +95,22 @@ struct DishView: View {
         HStack(spacing: 8){
             ForEach(viewmodel.restaurantDetails?.popularDishes ?? [], id: \.self) { dishes in
                 VStack(alignment: .leading){
-                    ZStack(alignment: .bottomLeading){
-                        KFImage(URL(string: dishes.photo))
-                            .resizable()
-                            .scaledToFill()
-                            .frame(height: 80)
-                        LinearGradient(colors: [.clear, .black], startPoint: .center, endPoint: .bottom)
-                        Text(dishes.price)
-                            .font(.system(size: 12, weight: .bold))
-                            .foregroundColor(.white)
-                            .padding(4)
+                    NavigationLink(destination: PopularRestaurantsPhotosView(viewmodel: viewmodel)) {
+                        ZStack(alignment: .bottomLeading){
+                            KFImage(URL(string: dishes.photo))
+                                .resizable()
+                                .scaledToFill()
+                                .frame(height: 80)
+                            LinearGradient(colors: [.clear, .black], startPoint: .center, endPoint: .bottom)
+                            Text(dishes.price)
+                                .font(.system(size: 12, weight: .bold))
+                                .foregroundColor(.white)
+                                .padding(4)
+                        }
+                        .shadow(color: .black, radius: 4)
+                        .padding(.vertical, 4)
+                        .padding(.horizontal, 2)
                     }
-                    .shadow(color: .black, radius: 4)
-                    .padding(.vertical, 4)
-                    .padding(.horizontal, 2)
                     Text(dishes.name)
                         .font(.system(size: 14, weight: .semibold))
                     Text("\(dishes.numPhotos) Photos")

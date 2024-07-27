@@ -12,10 +12,6 @@ struct PopularRestaurantsView: View {
     
     @ObservedObject var viewmodel = PopularRestaurantsDetailViewModel()
     
-    let restaurants: [PopularRestaurants] = [
-        .init(name: "Japan's Finest Tapas", image: "tapas"),
-        .init(name: "Bar & Grill", image: "bar_grill"),
-    ]
     var body: some View {
         VStack{
             HStack{
@@ -29,7 +25,7 @@ struct PopularRestaurantsView: View {
                 .padding(.top)
             ScrollView(.horizontal, showsIndicators: false){
                 HStack(spacing:8.0){
-                    ForEach(restaurants, id: \.self) { restaurant in
+                    ForEach(viewmodel.restaurants, id: \.self) { restaurant in
                         NavigationLink {
                             PopularRestaurantsDetailView()
                         } label: {

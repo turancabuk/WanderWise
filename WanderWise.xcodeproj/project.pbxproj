@@ -99,15 +99,10 @@
 		5C2BFC242C46A594008F3F40 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
-				5C2BFC222C469F01008F3F40 /* DiscoverCategoriesView.swift */,
-				5C2BFC2A2C47DF61008F3F40 /* DiscoverCategoriesDetailView.swift */,
-				5C2BFC112C469D24008F3F40 /* PopularDestinationsView.swift */,
-				5C831D2B2C495751009CEAC5 /* PopularDestinationsDetailView.swift */,
-				5C2BFC132C469D53008F3F40 /* PopularRestaurantsView.swift */,
-				5C0944F82C4D8B7B006A6087 /* PopularRestaurantsDetailView.swift */,
-				5C0B72D52C528CA6009533A4 /* PopularRestaurantsPhotosView.swift */,
-				5C9DDB832C54FDA8007520CB /* PopularRestaurantsPhotosDetailView.swift */,
-				5C2BFC152C469D70008F3F40 /* TrendingCreatorsView.swift */,
+				5C9DDB852C5550A5007520CB /* Discover */,
+				5C9DDB872C5550D8007520CB /* Destinations */,
+				5C9DDB882C5550F0007520CB /* Restaurants */,
+				5C9DDB8A2C555121007520CB /* Creators */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -167,6 +162,43 @@
 				5C486B3F2C43DB350012B925 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5C9DDB852C5550A5007520CB /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				5C2BFC222C469F01008F3F40 /* DiscoverCategoriesView.swift */,
+				5C2BFC2A2C47DF61008F3F40 /* DiscoverCategoriesDetailView.swift */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
+		5C9DDB872C5550D8007520CB /* Destinations */ = {
+			isa = PBXGroup;
+			children = (
+				5C2BFC112C469D24008F3F40 /* PopularDestinationsView.swift */,
+				5C831D2B2C495751009CEAC5 /* PopularDestinationsDetailView.swift */,
+			);
+			path = Destinations;
+			sourceTree = "<group>";
+		};
+		5C9DDB882C5550F0007520CB /* Restaurants */ = {
+			isa = PBXGroup;
+			children = (
+				5C2BFC132C469D53008F3F40 /* PopularRestaurantsView.swift */,
+				5C0944F82C4D8B7B006A6087 /* PopularRestaurantsDetailView.swift */,
+				5C0B72D52C528CA6009533A4 /* PopularRestaurantsPhotosView.swift */,
+				5C9DDB832C54FDA8007520CB /* PopularRestaurantsPhotosDetailView.swift */,
+			);
+			path = Restaurants;
+			sourceTree = "<group>";
+		};
+		5C9DDB8A2C555121007520CB /* Creators */ = {
+			isa = PBXGroup;
+			children = (
+				5C2BFC152C469D70008F3F40 /* TrendingCreatorsView.swift */,
+			);
+			path = Creators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
