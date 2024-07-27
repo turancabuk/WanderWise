@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
-    @State  var textfieldText: String = ""
+    @State  var textfieldText: String = "" 
     
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [
