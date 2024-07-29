@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
-    @State  var textfieldText: String = ""
+    @State  var textfieldText: String = "" 
     
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [
@@ -30,7 +30,7 @@ struct MainView: View {
                         Spacer()
                     }
                     .modifier(CustomModifier())
-                    DiscoverCategoriesView()
+                    DiscoverCategoriesView(viewmodel: DiscoverCategoriesDetailViewModel(name: ""))
                     VStack{
                         PopularDestinationsView()
                         PopularRestaurantsView()
