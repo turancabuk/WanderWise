@@ -10,11 +10,8 @@ import SwiftUI
 
 struct TrendingCreatorsView: View {
     
-    let creators: [TrendingCreators] = [
-        .init(name: "Amy Adams", image: "amy"),
-        .init(name: "Bilyy Childs", image: "billy"),
-        .init(name: "Sam Smith", image: "sam")
-    ]
+    @ObservedObject var viewmodel = PopularCreatorsViewModel()
+    
     var body: some View {
         VStack{
             HStack{
@@ -27,9 +24,9 @@ struct TrendingCreatorsView: View {
             }.padding(.horizontal)
                 .padding(.top)
             ScrollView(.horizontal, showsIndicators: false){
-                NavigationLink(destination: Text("destination4")) {
+                NavigationLink(destination: TrendingCreatorsDetailView(viewmodel: PopularRestaurantsDetailViewModel())) {
                     HStack(spacing: 8){
-                        ForEach(creators, id: \.self) { creator in
+                        ForEach(viewmodel.popularCreators, id: \.self) { creator in
                             VStack{
                                 Image(creator.image)
                                     .resizable()
