@@ -76,15 +76,43 @@ struct TrendingCreatorsDetailView: View {
                             .cornerRadius(16)
                     }
                     .padding()
+                    
                     ForEach(0...10, id: \.self) { _ in
-                        HStack {
-                            Spacer()
-                                .frame(height: 220)
-                                .background(Color.init(white: 0.9))
-                                .cornerRadius(24)
-                                .padding(.horizontal, 10)
+                        VStack(alignment: .leading, spacing: 10) {
+                            Image("japan")
+                                .resizable()
+                                .scaledToFill()
                                 .shadow(radius: 6)
-                        }
+                            HStack{
+                                Image("amy")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 32, height: 32)
+                                    .cornerRadius(.infinity)
+                                VStack(alignment: .leading) {
+                                    Text("deneme deneme deneme deneme deneme")
+                                        .foregroundColor(.black)
+                                        .font(.system(size: 12, weight: .semibold))
+                                    Text("500k Views")
+                                        .font(.system(size: 12))
+                                        .foregroundColor(.gray)
+                                }
+                            }.padding(.horizontal, 4)
+                            HStack(spacing: 12){
+                                ForEach(0...2, id: \.self) { _ in
+                                    Text("#Traveling")
+                                        .font(.system(size: 12, weight: .semibold))
+                                        .foregroundColor(.blue)
+                                        .padding(4)
+                                        .background(Color.blue.opacity(0.1))
+                                        .cornerRadius(8)
+                                }
+                            }.padding(.horizontal, 12)
+                                .padding(.bottom)
+                        }.background(.white)
+                            .cornerRadius(12)
+                            .shadow(radius: 10)
+                            .padding(.horizontal, 10)
                     }
                 }
             }.navigationBarTitle("creator name", displayMode: .inline)
@@ -95,3 +123,8 @@ struct TrendingCreatorsDetailView: View {
 #Preview {
     TrendingCreatorsDetailView(viewmodel: PopularRestaurantsDetailViewModel())
 }
+//.foregroundColor(.white)
+//.padding(.vertical, 10)
+//.padding(.horizontal, 40)
+//.background(Color.orange)
+//.cornerRadius(16)
