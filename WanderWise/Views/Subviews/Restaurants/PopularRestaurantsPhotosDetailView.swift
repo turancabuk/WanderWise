@@ -10,7 +10,7 @@ import Kingfisher
 
 struct PopularRestaurantsPhotosDetailView: View {
     
-    var viewmodel: PopularRestaurantsDetailViewModel
+    var viewmodel: PopularRestaurantsViewModel
     @State var selectedPhotoIndex: Int
     
     var body: some View {
@@ -26,5 +26,5 @@ struct PopularRestaurantsPhotosDetailView: View {
 }
 
 #Preview {
-    PopularRestaurantsPhotosDetailView(viewmodel: PopularRestaurantsDetailViewModel(), selectedPhotoIndex: 0)
+    PopularRestaurantsPhotosDetailView(viewmodel: PopularRestaurantsViewModel(restaurantId: 0), selectedPhotoIndex: 0)
 }
