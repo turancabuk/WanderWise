@@ -10,7 +10,13 @@ import Kingfisher
 
 struct PopularRestaurantsDetailView: View {
     
-    @ObservedObject var viewmodel = PopularRestaurantsDetailViewModel()
+    @ObservedObject var viewmodel: PopularRestaurantsViewModel
+    let restaurants: PopularRestaurants
+    
+    init(popularRestaurants: PopularRestaurants) {
+        self.restaurants = popularRestaurants
+        self.viewmodel = .init(restaurantId: popularRestaurants.id)
+    }
     
     var body: some View {
         ScrollView{
@@ -55,7 +61,7 @@ struct PopularRestaurantsDetailView: View {
 }
 struct RestaurantView: View {
     
-    let viewmodel: PopularRestaurantsDetailViewModel
+    let viewmodel: PopularRestaurantsViewModel
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
@@ -89,7 +95,7 @@ struct RestaurantView: View {
 }
 struct DishView: View {
     
-    let viewmodel: PopularRestaurantsDetailViewModel
+    let viewmodel: PopularRestaurantsViewModel
     
     var body: some View {
         HStack(spacing: 8){
@@ -124,7 +130,7 @@ struct DishView: View {
 }
 struct ReviewView: View {
     
-    let viewmodel: PopularRestaurantsDetailViewModel
+    let viewmodel: PopularRestaurantsViewModel
     
     var body: some View {
         ForEach(viewmodel.restaurantDetails?.reviews ?? [], id: \.self) { customer in
@@ -166,6 +172,6 @@ struct ReviewView: View {
     }
 }
 #Preview {
-    PopularRestaurantsDetailView()
+    PopularRestaurantsDetailView(popularRestaurants: .init(id: 0, name: "Japan's Finest Tapas", image: "tapas"))
 }
 

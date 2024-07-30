@@ -11,20 +11,39 @@ import Foundation
 class PopularCreatorsViewModel: ObservableObject {
 
     @Published var popularCreators: [TrendingCreators] = []
+    @Published var creatorsDetails: UserInfo?
     
-    init() {
+    init(userId: Int) {
         self.fetchCreators()
+        self.fetchCreatorsDetails(userId: userId)
     }
     func fetchCreators() {
         DispatchQueue.global().async {
             let creators = [
-                TrendingCreators(name: "Amy Adams", image: "amy"),
-                TrendingCreators(name: "Bilyy Childs", image: "billy"),
-                TrendingCreators(name: "Sam Smith", image: "sam")
+                TrendingCreators(id: 0, name: "Amy Adams", image: "amy"),
+                TrendingCreators(id: 1, name: "Bilyy Childs", image: "billy"),
+                TrendingCreators(id: 2, name: "Sam Smith", image: "sam")
             ]
             DispatchQueue.main.async {
                 self.popularCreators = creators
             }
         }
+    }
+    func fetchCreatorsDetails(userId: Int) {
+        
+        guard let url = URL(string: "https://travel.letsbuildthatapp.com/travel_discovery/user?id=\(userId)") else {return}
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            
+            guard let data = data else {return}
+            do{
+                let details = try JSONDecoder().decode(UserInfo.self, from: data)
+                DispatchQueue.main.async {
+                    self.creatorsDetails = details
+                }
+            }catch{
+                print(error.localizedDescription)
+            }
+        }.resume()
     }
 }

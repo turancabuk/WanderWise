@@ -26,19 +26,5 @@ struct review: Decodable, Hashable {
 }
 
 struct User: Decodable, Hashable {
-    let id: Int
-    let username: String
-    let firstName: String
-    let lastName: String
-    let profileImage: String
-    let followers: Int
-    let following: Int
-    let posts: [Post]
-}
-
-struct Post: Decodable, Hashable {
-    let title: String
-    let imageUrl: String
-    let views: String
-    let hashtags: [String]
+    let firstName, lastName, profileImage: String
 }
