@@ -7,28 +7,29 @@
 
 import SwiftUI
 
-class PopularRestaurantsDetailViewModel: ObservableObject {
+class PopularRestaurantsViewModel: ObservableObject {
     
     @Published var restaurants: [PopularRestaurants] = []
     @Published var restaurantDetails: PopularRestaurantsDetailModel?
     
-    init() {
+    init(restaurantId: Int) {
         self.fetchRestaurants()
-        self.fetchRestaurantsDetails()
+        self.fetchRestaurantsDetails(restaurantId: restaurantId)
     }
+    
     func fetchRestaurants() {
         DispatchQueue.global().async {
             let restarants = [
-                PopularRestaurants(name: "Japan's Finest Tapas", image: "tapas"),
-                PopularRestaurants(name: "Bar & Grill", image: "bar_grill")
+                PopularRestaurants(id: 0, name: "Japan's Finest Tapas", image: "tapas"),
+                PopularRestaurants(id: 1, name: "Bar & Grill", image: "bar_grill")
             ]
             DispatchQueue.main.async {
                 self.restaurants = restarants
             }
         }
     }
-    func fetchRestaurantsDetails() {
-        guard let url = URL(string: "https://travel.letsbuildthatapp.com/travel_discovery/restaurant?id=0") else {return}
+    func fetchRestaurantsDetails(restaurantId: Int) {
+        guard let url = URL(string: "https://travel.letsbuildthatapp.com/travel_discovery/restaurant?id=\(restaurantId)") else {return}
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             DispatchQueue.main.async {

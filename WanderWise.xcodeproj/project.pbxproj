@@ -9,14 +9,13 @@
 /* Begin PBXBuildFile section */
 		5C0944F92C4D8B7B006A6087 /* PopularRestaurantsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0944F82C4D8B7B006A6087 /* PopularRestaurantsDetailView.swift */; };
 		5C0944FD2C4E9ED6006A6087 /* PopularRestaurantsDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0944FC2C4E9ED6006A6087 /* PopularRestaurantsDetailModel.swift */; };
-		5C0944FF2C4E9F7C006A6087 /* PopularRestaurantsDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0944FE2C4E9F7C006A6087 /* PopularRestaurantsDetailViewModel.swift */; };
+		5C0944FF2C4E9F7C006A6087 /* PopularRestaurantsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0944FE2C4E9F7C006A6087 /* PopularRestaurantsViewModel.swift */; };
 		5C0945012C4EA39E006A6087 /* PopularDestinationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0945002C4EA39E006A6087 /* PopularDestinationsViewModel.swift */; };
 		5C0B72D62C528CA6009533A4 /* PopularRestaurantsPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0B72D52C528CA6009533A4 /* PopularRestaurantsPhotosView.swift */; };
 		5C2BFC122C469D24008F3F40 /* PopularDestinationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2BFC112C469D24008F3F40 /* PopularDestinationsView.swift */; };
 		5C2BFC142C469D53008F3F40 /* PopularRestaurantsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2BFC132C469D53008F3F40 /* PopularRestaurantsView.swift */; };
 		5C2BFC162C469D70008F3F40 /* TrendingCreatorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2BFC152C469D70008F3F40 /* TrendingCreatorsView.swift */; };
 		5C2BFC1B2C469E29008F3F40 /* DiscoverModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2BFC1A2C469E29008F3F40 /* DiscoverModel.swift */; };
-		5C2BFC1D2C469E5F008F3F40 /* PopularDestinationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2BFC1C2C469E5F008F3F40 /* PopularDestinationsModel.swift */; };
 		5C2BFC1F2C469E83008F3F40 /* PopularRestaurantsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2BFC1E2C469E83008F3F40 /* PopularRestaurantsModel.swift */; };
 		5C2BFC212C469EA1008F3F40 /* TrendingCreatorsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2BFC202C469EA1008F3F40 /* TrendingCreatorsModel.swift */; };
 		5C2BFC232C469F01008F3F40 /* DiscoverCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2BFC222C469F01008F3F40 /* DiscoverCategoriesView.swift */; };
@@ -39,14 +38,13 @@
 /* Begin PBXFileReference section */
 		5C0944F82C4D8B7B006A6087 /* PopularRestaurantsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularRestaurantsDetailView.swift; sourceTree = "<group>"; };
 		5C0944FC2C4E9ED6006A6087 /* PopularRestaurantsDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularRestaurantsDetailModel.swift; sourceTree = "<group>"; };
-		5C0944FE2C4E9F7C006A6087 /* PopularRestaurantsDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularRestaurantsDetailViewModel.swift; sourceTree = "<group>"; };
+		5C0944FE2C4E9F7C006A6087 /* PopularRestaurantsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularRestaurantsViewModel.swift; sourceTree = "<group>"; };
 		5C0945002C4EA39E006A6087 /* PopularDestinationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularDestinationsViewModel.swift; sourceTree = "<group>"; };
 		5C0B72D52C528CA6009533A4 /* PopularRestaurantsPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularRestaurantsPhotosView.swift; sourceTree = "<group>"; };
 		5C2BFC112C469D24008F3F40 /* PopularDestinationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularDestinationsView.swift; sourceTree = "<group>"; };
 		5C2BFC132C469D53008F3F40 /* PopularRestaurantsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularRestaurantsView.swift; sourceTree = "<group>"; };
 		5C2BFC152C469D70008F3F40 /* TrendingCreatorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingCreatorsView.swift; sourceTree = "<group>"; };
 		5C2BFC1A2C469E29008F3F40 /* DiscoverModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverModel.swift; sourceTree = "<group>"; };
-		5C2BFC1C2C469E5F008F3F40 /* PopularDestinationsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularDestinationsModel.swift; sourceTree = "<group>"; };
 		5C2BFC1E2C469E83008F3F40 /* PopularRestaurantsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularRestaurantsModel.swift; sourceTree = "<group>"; };
 		5C2BFC202C469EA1008F3F40 /* TrendingCreatorsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingCreatorsModel.swift; sourceTree = "<group>"; };
 		5C2BFC222C469F01008F3F40 /* DiscoverCategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCategoriesView.swift; sourceTree = "<group>"; };
@@ -92,7 +90,6 @@
 			children = (
 				5C2BFC1A2C469E29008F3F40 /* DiscoverModel.swift */,
 				5C2BFC2C2C47EFAC008F3F40 /* DiscoverDetailModel.swift */,
-				5C2BFC1C2C469E5F008F3F40 /* PopularDestinationsModel.swift */,
 				5C2BFC1E2C469E83008F3F40 /* PopularRestaurantsModel.swift */,
 				5C0944FC2C4E9ED6006A6087 /* PopularRestaurantsDetailModel.swift */,
 				5C2BFC202C469EA1008F3F40 /* TrendingCreatorsModel.swift */,
@@ -125,7 +122,7 @@
 			children = (
 				5C2BFC2F2C484BA7008F3F40 /* DiscoverCategoriesDetailViewModel.swift */,
 				5C0945002C4EA39E006A6087 /* PopularDestinationsViewModel.swift */,
-				5C0944FE2C4E9F7C006A6087 /* PopularRestaurantsDetailViewModel.swift */,
+				5C0944FE2C4E9F7C006A6087 /* PopularRestaurantsViewModel.swift */,
 				5C9DDB8B2C55835E007520CB /* PopularCreatorsViewModel.swift */,
 			);
 			path = ViewModels;
@@ -286,7 +283,6 @@
 				5C2BFC1F2C469E83008F3F40 /* PopularRestaurantsModel.swift in Sources */,
 				5C2BFC2D2C47EFAC008F3F40 /* DiscoverDetailModel.swift in Sources */,
 				5C9DDB8C2C55835E007520CB /* PopularCreatorsViewModel.swift in Sources */,
-				5C2BFC1D2C469E5F008F3F40 /* PopularDestinationsModel.swift in Sources */,
 				5C2BFC212C469EA1008F3F40 /* TrendingCreatorsModel.swift in Sources */,
 				5C831D2C2C495751009CEAC5 /* PopularDestinationsDetailView.swift in Sources */,
 				5C0944FD2C4E9ED6006A6087 /* PopularRestaurantsDetailModel.swift in Sources */,
@@ -298,7 +294,7 @@
 				5C2BFC162C469D70008F3F40 /* TrendingCreatorsView.swift in Sources */,
 				5C0944F92C4D8B7B006A6087 /* PopularRestaurantsDetailView.swift in Sources */,
 				5C2BFC232C469F01008F3F40 /* DiscoverCategoriesView.swift in Sources */,
-				5C0944FF2C4E9F7C006A6087 /* PopularRestaurantsDetailViewModel.swift in Sources */,
+				5C0944FF2C4E9F7C006A6087 /* PopularRestaurantsViewModel.swift in Sources */,
 				5C2BFC302C484BA7008F3F40 /* DiscoverCategoriesDetailViewModel.swift in Sources */,
 				5C2BFC122C469D24008F3F40 /* PopularDestinationsView.swift in Sources */,
 				5C2BFC142C469D53008F3F40 /* PopularRestaurantsView.swift in Sources */,
@@ -446,6 +442,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
@@ -476,6 +473,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;

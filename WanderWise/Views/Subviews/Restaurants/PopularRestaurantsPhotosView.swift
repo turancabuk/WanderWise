@@ -10,7 +10,7 @@ import Kingfisher
 
 struct PopularRestaurantsPhotosView: View {
     
-    var viewmodel: PopularRestaurantsDetailViewModel
+    var viewmodel: PopularRestaurantsViewModel
     @State var mode = "grid"
     @State var selectedPhotoIndex = 0
 
@@ -30,10 +30,9 @@ struct PopularRestaurantsPhotosView: View {
         }.navigationBarTitle("Restaurant Photos", displayMode: .inline)
     }
 }
-
 struct GridView: View {
     
-    let viewmodel : PopularRestaurantsDetailViewModel
+    let viewmodel : PopularRestaurantsViewModel
     
     var body: some View {
         let columns: [GridItem] = [
@@ -58,7 +57,7 @@ struct GridView: View {
 
 struct ListView: View {
     
-    let viewmodel: PopularRestaurantsDetailViewModel
+    let viewmodel: PopularRestaurantsViewModel
     
     var body: some View {
         let columns: [GridItem] = [
@@ -95,5 +94,5 @@ struct ListView: View {
     }
 }
 #Preview {
-    PopularRestaurantsPhotosView(viewmodel: PopularRestaurantsDetailViewModel())
+    PopularRestaurantsPhotosView(viewmodel: PopularRestaurantsViewModel(restaurantId: 0))
 }
