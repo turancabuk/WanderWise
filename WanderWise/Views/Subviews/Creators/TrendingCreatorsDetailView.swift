@@ -10,12 +10,12 @@ import Kingfisher
 
 struct TrendingCreatorsDetailView: View {
     
-    var viewmodel: TrendingCreatorsViewModel
+    @ObservedObject var viewmodel: TrendingCreatorsViewModel
     let creator: TrendingCreators
     
     init(creator: TrendingCreators) {
         self.creator = creator
-        self.viewmodel = .init(userId: creator.id)
+        self.viewmodel = .init(networkService: TrendingCreatorsNetworkService(), userId: creator.id)
     }
     
     var body: some View {

@@ -21,21 +21,23 @@ class DiscoverNetworkService: DiscoverNetworkServiceProtocol {
         }
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let error {
-                completion(.failure(error))
-                return
-            }
-            
-            guard let data = data else {
-                completion(.failure(NSError(domain: "No data", code: -1)))
-                return
-            }
-            
-            do{
-                let categories = try JSONDecoder().decode([DiscoverCategoriesDetail].self, from: data)
-                completion(.success(categories))
-            }catch let decodeError{
-                completion(.failure(decodeError))
+            DispatchQueue.main.async {
+                if let error {
+                    completion(.failure(error))
+                    return
+                }
+                
+                guard let data = data else {
+                    completion(.failure(NSError(domain: "No data", code: -1)))
+                    return
+                }
+                
+                do{
+                    let categories = try JSONDecoder().decode([DiscoverCategoriesDetail].self, from: data)
+                    completion(.success(categories))
+                }catch let decodeError{
+                    completion(.failure(decodeError))
+                }
             }
         }.resume()
     }
