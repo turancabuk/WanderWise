@@ -10,7 +10,12 @@ import SwiftUI
 
 struct TrendingCreatorsView: View {
     
-    @ObservedObject var viewmodel = TrendingCreatorsViewModel(userId: 0)
+    @StateObject var viewmodel: TrendingCreatorsViewModel
+    
+    init() {
+        let networkService = TrendingCreatorsNetworkService()
+        _viewmodel = StateObject(wrappedValue: TrendingCreatorsViewModel(networkService: networkService, userId: 0))
+    }
     
     var body: some View {
         VStack{
