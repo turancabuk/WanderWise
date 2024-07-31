@@ -15,7 +15,7 @@ struct PopularRestaurantsDetailView: View {
     
     init(popularRestaurants: PopularRestaurants) {
         self.restaurants = popularRestaurants
-        self.viewmodel = .init(restaurantId: popularRestaurants.id)
+        self.viewmodel = .init(networkService: PopularRestaurantsNetworkService(), restaurantId: popularRestaurants.id)
     }
     
     var body: some View {
