@@ -34,7 +34,7 @@ struct PopularDestinationsView: View {
                 }.padding(12)
             }
             .onAppear {
-                viewModel.fetchDestinations()
+                viewModel.destinations()
             }
         }
     }

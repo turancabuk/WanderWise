@@ -39,12 +39,12 @@ struct SplashScreenView: View {
                     .frame(height: 200)
             }
             Text("WonderWise")
-                .font(.largeTitle)
+                .font(.custom("Rilley", size: 44))
                 .fontWeight(.bold)
-                .foregroundColor(.black)
+                .foregroundColor(.white)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(RadialGradient(colors: [.white, .orange], center: .center, startRadius: 0.0, endRadius: 100))
+        .background(RadialGradient(colors: [.white, .orange], center: .center, startRadius: 0.0, endRadius: 175))
         .edgesIgnoringSafeArea(.all)
     }
 }

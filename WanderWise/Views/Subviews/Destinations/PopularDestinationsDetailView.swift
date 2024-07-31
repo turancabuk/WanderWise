@@ -69,7 +69,7 @@ struct PopularDestinationsDetailView: View {
 }
 struct AttractionView: View {
     
-    let attraction: AttractionModel
+    let attraction: PopularRestaurantsAttractionModel
     
     var body: some View {
         VStack{

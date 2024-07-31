@@ -1,5 +1,5 @@
 //
-//  PopularCreators.swift
+//  TrendingCreatorsViewModel.swift
 //  WanderWise
 //
 //  Created by Turan Çabuk on 27.07.2024.
@@ -8,16 +8,16 @@
 import Foundation
 
 
-class PopularCreatorsViewModel: ObservableObject {
+class TrendingCreatorsViewModel: ObservableObject {
 
     @Published var popularCreators: [TrendingCreators] = []
     @Published var creatorsDetails: UserInfo?
     
     init(userId: Int) {
-        self.fetchCreators()
+        self.creators()
         self.fetchCreatorsDetails(userId: userId)
     }
-    func fetchCreators() {
+    func creators() {
         DispatchQueue.global().async {
             let creators = [
                 TrendingCreators(id: 0, name: "Amy Adams", image: "amy"),
