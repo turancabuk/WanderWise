@@ -13,7 +13,7 @@ class PopularDestinationsViewModel: ObservableObject {
     
     @Published var cityDestinations: [PopularDestinations] = []
     @Published var selectedDestination: PopularDestinations?
-    @Published var attractions: [AttractionModel] = []
+    @Published var attractions: [PopularRestaurantsAttractionModel] = []
     @Published var toggleIsOn = false
     @Published var region: MKCoordinateRegion = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 0, longitude: 0),
@@ -21,12 +21,10 @@ class PopularDestinationsViewModel: ObservableObject {
     )
     
     init() {
-        DispatchQueue.main.async {
-            self.fetchDestinations()
-        }
+        self.destinations()
     }
     
-    func fetchDestinations() {
+    func destinations() {
         DispatchQueue.global().async {
             let destinations = [
                 PopularDestinations(country: "France", city: "Paris", image: ["eiffel_tower", "paris2", "paris3"], latitude: 48.855014, longitudee: 2.341231),
@@ -41,7 +39,7 @@ class PopularDestinationsViewModel: ObservableObject {
     
     func fetchAttractions(for city: String) {
         DispatchQueue.global().async {
-            var fetchedAttractions: [AttractionModel] = []
+            var fetchedAttractions: [PopularRestaurantsAttractionModel] = []
             switch city {
             case "Paris":
                 fetchedAttractions = [

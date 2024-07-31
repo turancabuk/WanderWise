@@ -10,7 +10,7 @@ import SwiftUI
 
 struct TrendingCreatorsView: View {
     
-    @ObservedObject var viewmodel = PopularCreatorsViewModel(userId: 0)
+    @ObservedObject var viewmodel = TrendingCreatorsViewModel(userId: 0)
     
     var body: some View {
         VStack{

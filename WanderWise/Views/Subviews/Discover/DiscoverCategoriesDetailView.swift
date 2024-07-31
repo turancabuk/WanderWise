@@ -10,34 +10,35 @@ import Kingfisher
 
 struct DiscoverCategoriesDetailView: View {
     
-    @ObservedObject var vm: DiscoverCategoriesDetailViewModel
+    @ObservedObject var viewmodel: DiscoverCategoriesViewModel
     private let name: String
     
     init(name: String) {
         self.name = name
-        self.vm = .init(name: name)
+        self.viewmodel = DiscoverCategoriesViewModel(networkService: DiscoverNetworkService())
+        self.viewmodel.fetchCategoriesDetails(name: name)
     }
     var body: some View {
         ZStack{
-            if vm.isLoading {
+            if viewmodel.isLoading {
                 VStack(spacing: 20){
                     ActivityIndicatorView()
                     Text("Loading")
                 }
             }else{
                 ZStack{
-                    if !vm.errorMessage.isEmpty {
+                    if !viewmodel.errorMessage.isEmpty {
                         VStack(spacing: 20){
                             Image(systemName: "xmark.octagon.fill")
                                 .font(.system(size: 64, weight: .semibold))
                                 .foregroundColor(.red)
-                            Text(vm.errorMessage)
+                            Text(viewmodel.errorMessage)
                                 .font(.system(size: 16, weight: .semibold))
                         }
                     }
                 }
                 ScrollView{
-                    ForEach(vm.places, id: \.self) { place in
+                    ForEach(viewmodel.places, id: \.self) { place in
                         VStack(alignment: .leading){
                             KFImage(URL(string: place.thumbnail))
                                 .resizable()

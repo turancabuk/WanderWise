@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DiscoverCategoriesView: View {
     
-    @ObservedObject var viewmodel: DiscoverCategoriesDetailViewModel
+    @ObservedObject var viewmodel: DiscoverCategoriesViewModel
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -39,6 +39,6 @@ struct NavigationLazyView<Content: View>: View {
     }
 }
 #Preview {
-    DiscoverCategoriesView(viewmodel: DiscoverCategoriesDetailViewModel(name: ""))
+    DiscoverCategoriesView(viewmodel: DiscoverCategoriesViewModel(networkService: DiscoverNetworkService()))
     
 }

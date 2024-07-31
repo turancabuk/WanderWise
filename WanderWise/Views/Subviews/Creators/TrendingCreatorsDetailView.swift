@@ -10,7 +10,7 @@ import Kingfisher
 
 struct TrendingCreatorsDetailView: View {
     
-    var viewmodel: PopularCreatorsViewModel
+    var viewmodel: TrendingCreatorsViewModel
     let creator: TrendingCreators
     
     init(creator: TrendingCreators) {
@@ -34,7 +34,7 @@ struct TrendingCreatorsDetailView: View {
 }
 struct UserProfileHeader: View {
     
-    let viewmodel: PopularCreatorsViewModel
+    let viewmodel: TrendingCreatorsViewModel
     
     var body: some View {
         KFImage(URL(string: viewmodel.creatorsDetails?.profileImage ?? ""))
@@ -65,7 +65,7 @@ struct UserProfileHeader: View {
 }
 struct UserStatsView: View {
     
-    let viewmodel: PopularCreatorsViewModel
+    let viewmodel: TrendingCreatorsViewModel
     
     var body: some View {
         HStack{
@@ -106,7 +106,7 @@ struct UserStatsView: View {
 }
 struct PostsListView: View {
     
-    let viewmodel: PopularCreatorsViewModel
+    let viewmodel: TrendingCreatorsViewModel
     
     var body: some View {
         ForEach(viewmodel.creatorsDetails?.posts ?? [], id: \.self) { photos in

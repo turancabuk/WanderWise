@@ -10,7 +10,7 @@ import SwiftUI
 class PopularRestaurantsViewModel: ObservableObject {
     
     @Published var restaurants: [PopularRestaurants] = []
-    @Published var restaurantDetails: PopularRestaurantsDetailModel?
+    @Published var restaurantDetails: PopularRestaurantsDetail?
     
     init(restaurantId: Int) {
         self.fetchRestaurants()
@@ -38,7 +38,7 @@ class PopularRestaurantsViewModel: ObservableObject {
                     return
                 }
                 do {
-                    self.restaurantDetails = try JSONDecoder().decode(PopularRestaurantsDetailModel.self, from: data)
+                    self.restaurantDetails = try JSONDecoder().decode(PopularRestaurantsDetail.self, from: data)
                 } catch {
                     print("Decoding error: \(error.localizedDescription)")
                 }
