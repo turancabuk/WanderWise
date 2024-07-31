@@ -9,41 +9,39 @@ import SwiftUI
 
 class PopularRestaurantsViewModel: ObservableObject {
     
+    private var networkService: PopularRestaurantsNetworkServiceProtocol
     @Published var restaurants: [PopularRestaurants] = []
     @Published var restaurantDetails: PopularRestaurantsDetail?
     
-    init(restaurantId: Int) {
-        self.fetchRestaurants()
+    init(networkService: PopularRestaurantsNetworkServiceProtocol, restaurantId: Int) {
+        self.networkService = networkService
         self.fetchRestaurantsDetails(restaurantId: restaurantId)
+        self.fetchRestaurants()
     }
     
     func fetchRestaurants() {
         DispatchQueue.global().async {
-            let restarants = [
+            let restaurants = [
                 PopularRestaurants(id: 0, name: "Japan's Finest Tapas", image: "tapas"),
                 PopularRestaurants(id: 1, name: "Bar & Grill", image: "bar_grill")
             ]
             DispatchQueue.main.async {
-                self.restaurants = restarants
+                self.restaurants = restaurants
             }
         }
     }
+    
     func fetchRestaurantsDetails(restaurantId: Int) {
-        guard let url = URL(string: "https://travel.letsbuildthatapp.com/travel_discovery/restaurant?id=\(restaurantId)") else {return}
-        
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        networkService.fetchRestaurantsDetails(restaurantId: restaurantId) { [weak self] result in
             DispatchQueue.main.async {
-                guard let data = data else {
-                    print("No data returned")
-                    return
-                }
-                do {
-                    self.restaurantDetails = try JSONDecoder().decode(PopularRestaurantsDetail.self, from: data)
-                } catch {
-                    print("Decoding error: \(error.localizedDescription)")
+                switch result {
+                case .success(let restaurantDetails):
+                    self?.restaurantDetails = restaurantDetails
+                case .failure(let error):
+                    print(error.localizedDescription)
                 }
             }
-        }.resume()
+        }
     }
 }
 

@@ -35,6 +35,7 @@
 		5C831D262C48FEE2009CEAC5 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C831D252C48FEE2009CEAC5 /* ActivityIndicatorView.swift */; };
 		5C831D2C2C495751009CEAC5 /* PopularDestinationsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C831D2B2C495751009CEAC5 /* PopularDestinationsDetailView.swift */; };
 		5C8770E82C5A41C80042291B /* DiscoverNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8770E72C5A41C80042291B /* DiscoverNetworkService.swift */; };
+		5C8770EB2C5A7BDB0042291B /* PopularRestaurantsNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8770EA2C5A7BDB0042291B /* PopularRestaurantsNetworkService.swift */; };
 		5C9DDB842C54FDA8007520CB /* PopularRestaurantsPhotosDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9DDB832C54FDA8007520CB /* PopularRestaurantsPhotosDetailView.swift */; };
 		5C9DDB8C2C55835E007520CB /* TrendingCreatorsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9DDB8B2C55835E007520CB /* TrendingCreatorsViewModel.swift */; };
 		5C9DDB8E2C55851D007520CB /* TrendingCreatorsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9DDB8D2C55851D007520CB /* TrendingCreatorsDetailView.swift */; };
@@ -70,6 +71,7 @@
 		5C831D252C48FEE2009CEAC5 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		5C831D2B2C495751009CEAC5 /* PopularDestinationsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularDestinationsDetailView.swift; sourceTree = "<group>"; };
 		5C8770E72C5A41C80042291B /* DiscoverNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverNetworkService.swift; sourceTree = "<group>"; };
+		5C8770EA2C5A7BDB0042291B /* PopularRestaurantsNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularRestaurantsNetworkService.swift; sourceTree = "<group>"; };
 		5C9DDB832C54FDA8007520CB /* PopularRestaurantsPhotosDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularRestaurantsPhotosDetailView.swift; sourceTree = "<group>"; };
 		5C9DDB8B2C55835E007520CB /* TrendingCreatorsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingCreatorsViewModel.swift; sourceTree = "<group>"; };
 		5C9DDB8D2C55851D007520CB /* TrendingCreatorsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingCreatorsDetailView.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				5C8770E62C5A41B40042291B /* Discover */,
+				5C8770E92C5A7B020042291B /* PopularRestaurants */,
 			);
 			path = "Network Services";
 			sourceTree = "<group>";
@@ -277,6 +280,14 @@
 				5C8770E72C5A41C80042291B /* DiscoverNetworkService.swift */,
 			);
 			path = Discover;
+			sourceTree = "<group>";
+		};
+		5C8770E92C5A7B020042291B /* PopularRestaurants */ = {
+			isa = PBXGroup;
+			children = (
+				5C8770EA2C5A7BDB0042291B /* PopularRestaurantsNetworkService.swift */,
+			);
+			path = PopularRestaurants;
 			sourceTree = "<group>";
 		};
 		5C9DDB852C5550A5007520CB /* Discover */ = {
@@ -414,6 +425,7 @@
 				5C2BFC302C484BA7008F3F40 /* DiscoverCategoriesViewModel.swift in Sources */,
 				5C47C7072C5A342C004E69B6 /* PopularDestinationsModel.swift in Sources */,
 				5C2BFC122C469D24008F3F40 /* PopularDestinationsView.swift in Sources */,
+				5C8770EB2C5A7BDB0042291B /* PopularRestaurantsNetworkService.swift in Sources */,
 				5C2BFC142C469D53008F3F40 /* PopularRestaurantsView.swift in Sources */,
 				5C486B3B2C43DB340012B925 /* MainView.swift in Sources */,
 				5C0945012C4EA39E006A6087 /* PopularDestinationsViewModel.swift in Sources */,

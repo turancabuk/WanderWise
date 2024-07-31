@@ -94,5 +94,5 @@ struct ListView: View {
     }
 }
 #Preview {
-    PopularRestaurantsPhotosView(viewmodel: PopularRestaurantsViewModel(restaurantId: 0))
+    PopularRestaurantsPhotosView(viewmodel: PopularRestaurantsViewModel(networkService: PopularRestaurantsNetworkService(), restaurantId: 0))
 }
