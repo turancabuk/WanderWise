@@ -30,7 +30,7 @@ struct MainView: View {
                         Spacer()
                     }
                     .modifier(CustomModifier())
-                    DiscoverCategoriesView(viewmodel: DiscoverCategoriesDetailViewModel(name: ""))
+                    DiscoverCategoriesView(viewmodel: DiscoverCategoriesViewModel(networkService: DiscoverNetworkService()))
                     VStack{
                         PopularDestinationsView()
                         PopularRestaurantsView()

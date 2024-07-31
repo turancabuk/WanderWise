@@ -26,5 +26,5 @@ struct PopularRestaurantsPhotosDetailView: View {
 }
 
 #Preview {
-    PopularRestaurantsPhotosDetailView(viewmodel: PopularRestaurantsViewModel(restaurantId: 0), selectedPhotoIndex: 0)
+    PopularRestaurantsPhotosDetailView(viewmodel: PopularRestaurantsViewModel(networkService: PopularRestaurantsNetworkService(), restaurantId: 0), selectedPhotoIndex: 0)
 }

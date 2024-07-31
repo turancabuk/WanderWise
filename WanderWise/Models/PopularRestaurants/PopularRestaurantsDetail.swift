@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PopularRestaurantsDetailModel: Decodable, Hashable{
+struct PopularRestaurantsDetail: Decodable, Hashable{
     let name, city, country, description, thumbnail: String
     let photos: [String]
     let popularDishes: [Dish]

@@ -7,10 +7,14 @@
 
 import SwiftUI
 
-
 struct PopularRestaurantsView: View {
     
-    @ObservedObject var viewmodel = PopularRestaurantsViewModel(restaurantId: 0)
+    @StateObject var viewmodel: PopularRestaurantsViewModel
+    
+    init() {
+        let networkService = PopularRestaurantsNetworkService()
+        _viewmodel = StateObject(wrappedValue: PopularRestaurantsViewModel(networkService: networkService, restaurantId: 0))
+    }
     
     var body: some View {
         VStack{

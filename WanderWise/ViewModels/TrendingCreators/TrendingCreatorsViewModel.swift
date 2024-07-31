@@ -1,5 +1,5 @@
 //
-//  PopularCreators.swift
+//  TrendingCreatorsViewModel.swift
 //  WanderWise
 //
 //  Created by Turan Çabuk on 27.07.2024.
@@ -8,16 +8,19 @@
 import Foundation
 
 
-class PopularCreatorsViewModel: ObservableObject {
+class TrendingCreatorsViewModel: ObservableObject {
 
+    private var networkService: TrendingCreatorsNetworkServiceProtocol
     @Published var popularCreators: [TrendingCreators] = []
     @Published var creatorsDetails: UserInfo?
     
-    init(userId: Int) {
-        self.fetchCreators()
+    init(networkService: TrendingCreatorsNetworkServiceProtocol, userId: Int) {
+        self.networkService = networkService
+        self.creators()
         self.fetchCreatorsDetails(userId: userId)
     }
-    func fetchCreators() {
+    
+    func creators() {
         DispatchQueue.global().async {
             let creators = [
                 TrendingCreators(id: 0, name: "Amy Adams", image: "amy"),
@@ -29,21 +32,17 @@ class PopularCreatorsViewModel: ObservableObject {
             }
         }
     }
+    
     func fetchCreatorsDetails(userId: Int) {
-        
-        guard let url = URL(string: "https://travel.letsbuildthatapp.com/travel_discovery/user?id=\(userId)") else {return}
-        
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            
-            guard let data = data else {return}
-            do{
-                let details = try JSONDecoder().decode(UserInfo.self, from: data)
-                DispatchQueue.main.async {
-                    self.creatorsDetails = details
+        networkService.fetchCreatorsDetails(userId: userId) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let users):
+                    self?.creatorsDetails = users
+                case .failure(let error):
+                    print(error.localizedDescription)
                 }
-            }catch{
-                print(error.localizedDescription)
             }
-        }.resume()
+        }
     }
 }
