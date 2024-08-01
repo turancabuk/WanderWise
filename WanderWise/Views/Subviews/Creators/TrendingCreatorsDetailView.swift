@@ -12,6 +12,8 @@ struct TrendingCreatorsDetailView: View {
     
     @ObservedObject var viewmodel: TrendingCreatorsViewModel
     let creator: TrendingCreators
+    let gradientColors: [Color] = [.red, .orange, .yellow, .green, .blue, .purple, .pink]
+    @State var degrees: Double = 0
     
     init(creator: TrendingCreators) {
         self.creator = creator
@@ -24,9 +26,9 @@ struct TrendingCreatorsDetailView: View {
                 .ignoresSafeArea()
             ScrollView{
                 VStack(alignment: .center, spacing: 18){
-                    UserProfileHeader(viewmodel: viewmodel)
+                    UserProfileHeader(viewmodel: viewmodel, gradientColors: gradientColors, degrees: degrees)
                     UserStatsView(viewmodel: viewmodel)
-                    PostsListView(viewmodel: viewmodel)
+                    PostsListView(viewmodel: viewmodel, gradientColors: gradientColors, degrees: degrees)
                 }
             }.navigationBarTitle(viewmodel.creatorsDetails?.username ?? "", displayMode: .inline)
         }
@@ -35,9 +37,14 @@ struct TrendingCreatorsDetailView: View {
 struct UserProfileHeader: View {
     
     let viewmodel: TrendingCreatorsViewModel
+    let gradientColors: [Color]
+    @State var degrees: Double
     
     var body: some View {
         KFImage(URL(string: viewmodel.creatorsDetails?.profileImage ?? ""))
+            .placeholder{
+                ActivityIndicatorView()
+            }
             .resizable()
             .frame(width: 86, height: 86)
             .scaledToFit()
@@ -107,11 +114,16 @@ struct UserStatsView: View {
 struct PostsListView: View {
     
     let viewmodel: TrendingCreatorsViewModel
+    let gradientColors: [Color]
+    @State var degrees: Double
     
     var body: some View {
         ForEach(viewmodel.creatorsDetails?.posts ?? [], id: \.self) { photos in
             VStack(alignment: .leading, spacing: 10) {
                 KFImage(URL(string: photos.imageUrl))
+                    .placeholder{
+                        ActivityIndicatorView()
+                    }
                     .resizable()
                     .scaledToFill()
                     .shadow(radius: 6)

@@ -12,6 +12,8 @@ struct DiscoverCategoriesDetailView: View {
     
     @ObservedObject var viewmodel: DiscoverCategoriesViewModel
     private let name: String
+    let gradientColors: [Color] = [.red, .orange, .yellow, .green, .blue, .purple, .pink]
+    @State var degrees: Double = 0
     
     init(name: String) {
         self.name = name
@@ -19,37 +21,40 @@ struct DiscoverCategoriesDetailView: View {
         self.viewmodel.fetchCategoriesDetails(name: name)
     }
     var body: some View {
-        ZStack{
+        ZStack {
             if viewmodel.isLoading {
-                VStack(spacing: 20){
-                    ActivityIndicatorView()
+                VStack(spacing: 20) {
+                    ProgressView()
                     Text("Loading")
                 }
-            }else{
-                ZStack{
-                    if !viewmodel.errorMessage.isEmpty {
-                        VStack(spacing: 20){
-                            Image(systemName: "xmark.octagon.fill")
-                                .font(.system(size: 64, weight: .semibold))
-                                .foregroundColor(.red)
-                            Text(viewmodel.errorMessage)
-                                .font(.system(size: 16, weight: .semibold))
-                        }
-                    }
+            } else if !viewmodel.errorMessage.isEmpty {
+                VStack(spacing: 20) {
+                    Image(systemName: "xmark.octagon.fill")
+                        .font(.system(size: 64, weight: .semibold))
+                        .foregroundColor(.red)
+                    Text(viewmodel.errorMessage)
+                        .font(.system(size: 16, weight: .semibold))
                 }
-                ScrollView{
+            } else {
+                ScrollView {
                     ForEach(viewmodel.places, id: \.self) { place in
-                        VStack(alignment: .leading){
+                        VStack(alignment: .leading) {
                             KFImage(URL(string: place.thumbnail))
+                                .placeholder{
+                                    GradientCircleView(gradientColors: gradientColors, degrees: degrees, width: 75, height: 75)
+                                }
                                 .resizable()
-                                .scaledToFill()
+                                .scaledToFit()
                             Text(place.name)
                                 .font(.system(size: 12, weight: .semibold))
+                                .foregroundColor(.black)
                                 .padding()
-                        }.modifier(TileModifier())
-                            .padding()
+                        }
+                        .modifier(TileModifier())
+                        .padding()
                     }
-                }.navigationBarTitle(name, displayMode: .inline)
+                }
+                .navigationBarTitle(name, displayMode: .inline)
             }
         }
     }
