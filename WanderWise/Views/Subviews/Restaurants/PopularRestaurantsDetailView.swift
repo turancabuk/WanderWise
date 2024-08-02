@@ -12,6 +12,8 @@ struct PopularRestaurantsDetailView: View {
     
     @ObservedObject var viewmodel: PopularRestaurantsViewModel
     let restaurants: PopularRestaurants
+    let gradientColors: [Color] = [.red, .orange, .yellow, .green, .blue, .purple, .pink]
+    @State var degrees: Double = 0
     
     init(popularRestaurants: PopularRestaurants) {
         self.restaurants = popularRestaurants
@@ -20,7 +22,7 @@ struct PopularRestaurantsDetailView: View {
     
     var body: some View {
         ScrollView{
-            RestaurantView(viewmodel: viewmodel)
+            RestaurantView(viewmodel: viewmodel, gradientColors: gradientColors, degrees: degrees)
             VStack(alignment: .leading, spacing: 8){
                 Text("Location & Description")
                     .font(.system(size: 18, weight: .bold))
@@ -62,13 +64,19 @@ struct PopularRestaurantsDetailView: View {
 struct RestaurantView: View {
     
     let viewmodel: PopularRestaurantsViewModel
+    var gradientColors: [Color]
+    @State var degrees: Double
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
-            KFImage(URL(string: viewmodel.restaurantDetails?.thumbnail ?? ""))
-                .resizable()
-                .frame(height: 250)
+            HStack {
+                KFImage(URL(string: viewmodel.restaurantDetails?.thumbnail ?? ""))
+                    .placeholder{
+                        GradientCircleView(gradientColors: gradientColors, degrees: degrees, width: 75, height: 75)
+                    }
+                    .resizable()
                 .scaledToFit()
+            }
             LinearGradient(colors: [.clear, .black], startPoint: .center, endPoint: .bottom)
             VStack(alignment: .leading, spacing: 6) {
                 Text(viewmodel.restaurantDetails?.name ?? "")
