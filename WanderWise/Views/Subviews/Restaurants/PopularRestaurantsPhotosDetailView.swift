@@ -21,10 +21,14 @@ struct PopularRestaurantsPhotosDetailView: View {
                     .scaledToFit()
                     .tag(index)
             }
-        }.tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+        }.tabViewStyle(.page)
     }
 }
 
 #Preview {
-    PopularRestaurantsPhotosDetailView(viewmodel: PopularRestaurantsViewModel(networkService: PopularRestaurantsNetworkService(), restaurantId: 0), selectedPhotoIndex: 0)
+    PopularRestaurantsPhotosDetailView(
+        viewmodel: PopularRestaurantsViewModel(
+            networkService: PopularRestaurantsNetworkService(),
+            restaurantId: 0),
+            selectedPhotoIndex: 0)
 }

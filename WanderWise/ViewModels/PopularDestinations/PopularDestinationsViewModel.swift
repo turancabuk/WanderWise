@@ -8,7 +8,6 @@
 import SwiftUI
 import MapKit
 
-
 class PopularDestinationsViewModel: ObservableObject {
     
     @Published var cityDestinations: [PopularDestinations] = []
@@ -21,10 +20,10 @@ class PopularDestinationsViewModel: ObservableObject {
     )
     
     init() {
-        self.destinations()
+        self.loadDestinations()
     }
     
-    func destinations() {
+    func loadDestinations() {
         DispatchQueue.global().async {
             let destinations = [
                 PopularDestinations(country: "France", city: "Paris", image: ["eiffel_tower", "paris2", "paris3"], latitude: 48.855014, longitudee: 2.341231),
@@ -69,11 +68,13 @@ class PopularDestinationsViewModel: ObservableObject {
     }
     
     func selectDestination(_ destination: PopularDestinations) {
-        self.selectedDestination = destination
-        self.region = MKCoordinateRegion(
-            center: CLLocationCoordinate2D(latitude: destination.latitude, longitude: destination.longitudee),
-            span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-        )
-        fetchAttractions(for: destination.city)
+        DispatchQueue.main.async {
+            self.selectedDestination = destination
+            self.region = MKCoordinateRegion(
+                center: CLLocationCoordinate2D(latitude: destination.latitude, longitude: destination.longitudee),
+                span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+            )
+            self.fetchAttractions(for: destination.city)
+        }
     }
 }
