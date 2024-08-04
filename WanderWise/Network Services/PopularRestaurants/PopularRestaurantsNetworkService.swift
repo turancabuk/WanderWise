@@ -7,12 +7,6 @@
 
 import SwiftUI
 
-enum NetworkError: Error {
-    case invalidURL
-    case noData
-    case decodingError(Error)
-}
-
 protocol PopularRestaurantsNetworkServiceProtocol{
     func fetchRestaurantsDetails(restaurantId: Int, completion: @escaping (Result<PopularRestaurantsDetail, NetworkError>) -> Void)
 }

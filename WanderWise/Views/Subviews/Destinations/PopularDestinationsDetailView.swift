@@ -37,7 +37,7 @@ struct PopularDestinationsDetailView: View {
                 HStack{
                     Spacer()
                 }
-                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+                Text(SampleDescriptions.description)
                     .font(.system(size: 14, weight: .medium))
                     .padding(.bottom)
                 HStack{
@@ -90,15 +90,10 @@ struct AttractionView: View {
     }
 }
 #Preview {
-    let viewModel = PopularDestinationsViewModel()
-    let sampleDestination = PopularDestinations(
+    return PopularDestinationsDetailView(viewModel: PopularDestinationsViewModel(), destination: .init(
         country: "France",
         city: "Paris",
         image: ["eiffel_tower", "paris2", "paris3"],
         latitude: 48.855014,
-        longitudee: 2.341231
-    )
-    viewModel.selectDestination(sampleDestination)
-    
-    return PopularDestinationsDetailView(viewModel: viewModel, destination: sampleDestination)
+        longitudee: 2.341231))
 }

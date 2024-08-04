@@ -10,7 +10,6 @@ import SwiftUI
 class DiscoverCategoriesViewModel: ObservableObject {
     
     private var networkService: DiscoverNetworkServiceProtocol
-    
     @Published var places: [DiscoverCategoriesDetail] = []
     @Published var discoverCategories: [DiscoverCategories] = []
     @Published var isLoading = true
@@ -41,15 +40,13 @@ class DiscoverCategoriesViewModel: ObservableObject {
         self.errorMessage = ""
         
         networkService.fetchCategoriesDetails(name: name) { [weak self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let categories):
-                    self?.places = categories
-                    self?.isLoading = false
-                case .failure(let error):
-                    self?.errorMessage = error.localizedDescription
-                    self?.isLoading = false
-                }
+            switch result {
+            case .success(let categories):
+                self?.places = categories
+                self?.isLoading = false
+            case .failure(let error):
+                self?.errorMessage = error.localizedDescription
+                self?.isLoading = false
             }
         }
     }

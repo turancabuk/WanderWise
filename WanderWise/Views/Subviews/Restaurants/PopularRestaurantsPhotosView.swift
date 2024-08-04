@@ -13,6 +13,8 @@ struct PopularRestaurantsPhotosView: View {
     var viewmodel: PopularRestaurantsViewModel
     @State var mode = "grid"
     @State var selectedPhotoIndex = 0
+    @State var degrees: Double = 0
+    let gradientColors: [Color] = [.red, .orange, .yellow, .green, .blue, .purple, .pink]
 
 
     var body: some View {
@@ -23,7 +25,7 @@ struct PopularRestaurantsPhotosView: View {
             .padding()
         ScrollView{
             if mode == "grid" {
-                GridView(viewmodel: viewmodel)
+                GridView(viewmodel: viewmodel, gradientColors: gradientColors, degrees: degrees)
             }else{
                 ListView(viewmodel: viewmodel)
             }
@@ -33,6 +35,8 @@ struct PopularRestaurantsPhotosView: View {
 struct GridView: View {
     
     let viewmodel : PopularRestaurantsViewModel
+    let gradientColors: [Color]
+    @State var degrees: Double
     
     var body: some View {
         let columns: [GridItem] = [
@@ -45,7 +49,11 @@ struct GridView: View {
             ForEach(Array((viewmodel.restaurantDetails?.photos ?? []).enumerated()), id: \.element) { index, restaurantPhotos in
                 NavigationLink(destination: PopularRestaurantsPhotosDetailView(viewmodel: viewmodel, selectedPhotoIndex: index)) {
                     KFImage(URL(string: restaurantPhotos))
+                        .placeholder{
+                            GradientCircleView(gradientColors: gradientColors, degrees: degrees, width: 25, height: 25)
+                        }
                         .resizable()
+                        .scaledToFit()
                         .frame(height: 90)
                         .padding(.horizontal,4)
                 }
