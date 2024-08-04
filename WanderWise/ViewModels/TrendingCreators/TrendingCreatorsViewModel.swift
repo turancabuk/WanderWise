@@ -35,13 +35,11 @@ class TrendingCreatorsViewModel: ObservableObject {
     
     func fetchCreatorsDetails(userId: Int) {
         networkService.fetchCreatorsDetails(userId: userId) { [weak self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let users):
-                    self?.creatorsDetails = users
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
+            switch result {
+            case .success(let users):
+                self?.creatorsDetails = users
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
     }

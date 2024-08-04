@@ -11,9 +11,9 @@ import Kingfisher
 struct TrendingCreatorsDetailView: View {
     
     @ObservedObject var viewmodel: TrendingCreatorsViewModel
+    @State var degrees: Double = 0
     let creator: TrendingCreators
     let gradientColors: [Color] = [.red, .orange, .yellow, .green, .blue, .purple, .pink]
-    @State var degrees: Double = 0
     
     init(creator: TrendingCreators) {
         self.creator = creator
@@ -21,24 +21,18 @@ struct TrendingCreatorsDetailView: View {
     }
     
     var body: some View {
-        ZStack{
-            Color.white
-                .ignoresSafeArea()
-            ScrollView{
-                VStack(alignment: .center, spacing: 18){
-                    UserProfileHeader(viewmodel: viewmodel, gradientColors: gradientColors, degrees: degrees)
-                    UserStatsView(viewmodel: viewmodel)
-                    PostsListView(viewmodel: viewmodel, gradientColors: gradientColors, degrees: degrees)
-                }
-            }.navigationBarTitle(viewmodel.creatorsDetails?.username ?? "", displayMode: .inline)
-        }
+        ScrollView{
+            VStack(alignment: .center, spacing: 18){
+                UserProfileHeader(viewmodel: viewmodel)
+                UserStatsView(viewmodel: viewmodel)
+                PostsListView(viewmodel: viewmodel)
+            }
+        }.navigationBarTitle(viewmodel.creatorsDetails?.username ?? "", displayMode: .inline)
     }
 }
 struct UserProfileHeader: View {
     
     let viewmodel: TrendingCreatorsViewModel
-    let gradientColors: [Color]
-    @State var degrees: Double
     
     var body: some View {
         KFImage(URL(string: viewmodel.creatorsDetails?.profileImage ?? ""))
@@ -49,19 +43,19 @@ struct UserProfileHeader: View {
             .frame(width: 86, height: 86)
             .scaledToFit()
             .cornerRadius(.infinity)
-            .shadow(color: .black, radius: 10)
+            .shadow(color: .primary, radius: 10)
             .padding(.vertical)
         HStack(alignment: .center){
             Text(viewmodel.creatorsDetails?.firstName ?? "")
             Text(viewmodel.creatorsDetails?.lastName ?? "")
-        }.foregroundColor(.black)
-            .font(.system(size: 16, weight: .semibold))
+        }
+        .font(.system(size: 16, weight: .semibold))
         HStack{
             Text(viewmodel.creatorsDetails?.username ?? "")
             Image(systemName: "hand.thumbsup.fill")
             Text("14031")
-        }.font(.system(size: 12, weight: .regular))
-            .foregroundColor(.black)
+        }
+        .font(.system(size: 12, weight: .regular))
         HStack{
             Text("Youtuber")
             Text("Vlogger")
@@ -79,7 +73,6 @@ struct UserStatsView: View {
             VStack(spacing: 6){
                 Text("\(viewmodel.creatorsDetails?.followers ?? 0)")
                     .font(.system(size: 16, weight: .bold))
-                    .foregroundColor(.black)
                 Text("Followers")
                     .font(.system(size: 14, weight: .regular))
                     .foregroundColor(.gray)
@@ -88,7 +81,6 @@ struct UserStatsView: View {
             VStack(spacing: 6){
                 Text("\(viewmodel.creatorsDetails?.following ?? 0)")
                     .font(.system(size: 16, weight: .bold))
-                    .foregroundColor(.black)
                 Text("Following")
                     .font(.system(size: 14, weight: .regular))
                     .foregroundColor(.gray)
@@ -102,10 +94,10 @@ struct UserStatsView: View {
                 .background(Color.orange)
                 .cornerRadius(16)
             Button("Contact", action: {})
-                .foregroundColor(.black)
+                .foregroundColor(Color(.systemBackground))
                 .padding(.vertical, 10)
                 .padding(.horizontal, 40)
-                .background(Color.gray.opacity(0.2))
+                .background(Color.primary)
                 .cornerRadius(16)
         }
         .padding()
@@ -114,8 +106,6 @@ struct UserStatsView: View {
 struct PostsListView: View {
     
     let viewmodel: TrendingCreatorsViewModel
-    let gradientColors: [Color]
-    @State var degrees: Double
     
     var body: some View {
         ForEach(viewmodel.creatorsDetails?.posts ?? [], id: \.self) { photos in
@@ -153,11 +143,13 @@ struct PostsListView: View {
                     }
                 }.padding(.horizontal, 12)
                     .padding(.bottom)
-            }.background(.white)
-                .cornerRadius(12)
-                .shadow(radius: 10)
-                .padding(.horizontal, 10)
+            }
+            .background(.white)
+            .cornerRadius(12)
+            .shadow(radius: 10)
+            .padding(.horizontal, 14)
         }
+        .shadow(color: .primary, radius: 2)
     }
 }
 #Preview {

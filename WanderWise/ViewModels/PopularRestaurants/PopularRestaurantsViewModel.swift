@@ -33,13 +33,11 @@ class PopularRestaurantsViewModel: ObservableObject {
     
     func fetchRestaurantsDetails(restaurantId: Int) {
         networkService.fetchRestaurantsDetails(restaurantId: restaurantId) { [weak self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let restaurantDetails):
-                    self?.restaurantDetails = restaurantDetails
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
+            switch result {
+            case .success(let restaurantDetails):
+                self?.restaurantDetails = restaurantDetails
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
     }

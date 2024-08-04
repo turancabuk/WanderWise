@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct PopularDestinationsView: View {
     
     @ObservedObject var viewModel = PopularDestinationsViewModel()
@@ -34,7 +33,7 @@ struct PopularDestinationsView: View {
                 }.padding(12)
             }
             .onAppear {
-                viewModel.destinations()
+                viewModel.loadDestinations()
             }
         }
     }

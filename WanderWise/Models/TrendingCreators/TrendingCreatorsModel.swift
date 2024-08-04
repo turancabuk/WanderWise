@@ -12,13 +12,4 @@ struct TrendingCreators: Hashable {
     let name, image: String
 }
 
-struct UserInfo: Decodable, Hashable {
-    let username, firstName, lastName, profileImage: String
-    let followers, following: Int
-    let posts: [PostDetail]
-}
 
-struct PostDetail: Decodable, Hashable {
-    let title, imageUrl, views: String
-    let hashtags: [String]
-}
